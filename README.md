@@ -44,4 +44,6 @@
 ## 실행 안내
 아직 실행 가능한 API 서버가 없습니다. `backend/README.md`에 서버 실행법, `db/README.md`에 MySQL 실행 순서를 구현과 함께 작성합니다. Postman 요청 주소는 설계 예시입니다.
 
+Postman에서는 [Collection](postman/DB8.postman_collection.json)과 [DB8 Local 환경](postman/DB8-Local.postman_environment.json)을 Import하고, 활성 환경의 `baseUrl`만 각자 API 서버 주소·포트로 설정합니다. 기본 `http://localhost:3000`은 예시입니다. [설정 방법](postman/README.md)을 참고하세요.
+
 실제 DB 비밀번호·토큰은 commit하지 않고, `.env.example`을 복사한 로컬 `.env`에만 입력합니다. 샘플 데이터와 캡처는 가상 데이터를 사용합니다.
