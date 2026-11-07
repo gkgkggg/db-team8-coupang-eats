@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "DB8 쿠팡이츠 — API 설계 초안",
+    "description": "실행 가능한 서버가 없는 설계 초안입니다. baseUrl과 ID를 구현 환경에 맞춰 변경하세요.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    },
+    {
+      "key": "storeId",
+      "value": "3"
+    },
+    {
+      "key": "orderId",
+      "value": "101"
+    }
+  ],
+  "item": [
+    {
+      "name": "홈 조회",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/home?userId={{userId}}&categoryId=2&keyword=치킨"
+      }
+    },
+    {
+      "name": "마이이츠 요약",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/{{userId}}/summary"
+      }
+    },
+    {
+      "name": "즐겨찾기 조회",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/{{userId}}/favorites"
+      }
+    },
+    {
+      "name": "즐겨찾기 추가",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/users/{{userId}}/favorites",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"storeId\": 3}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "즐겨찾기 해제",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/{{userId}}/favorites/{{storeId}}"
+      }
+    },
+    {
+      "name": "과거 주문",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/{{userId}}/orders?status=completed"
+      }
+    },
+    {
+      "name": "준비 중 주문",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/users/{{userId}}/orders?status=preparing"
+      }
+    },
+    {
+      "name": "주문 상세",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/orders/{{orderId}}"
+      }
+    }
+  ]
+}
