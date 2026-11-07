@@ -6,6 +6,8 @@
 
 ## 공용 자료
 - [Notion 프로젝트 홈](https://app.notion.com/p/40d3cd86f142803b9b56fd49db5599be)
+- [역할 분담·보고서·발표](https://app.notion.com/p/4113cd86f14281b6bc6ec94d58bd1abd)
+- [DB·API 구현 자료](https://app.notion.com/p/4113cd86f14281989808ee6b7daea80b)
 - [Google Docs 작업 계획](https://docs.google.com/document/d/18E7jaJEv43JHhhHHRuGolu_DX54voueo2YwH5gBFQUI)
 - [회의 시간 입력](https://www.when2meet.com/?39622816-pPWgN)
 
