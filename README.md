@@ -10,6 +10,8 @@
 - [DB·API 구현 자료](https://app.notion.com/p/4113cd86f14281989808ee6b7daea80b)
 - [Google Docs 작업 계획](https://docs.google.com/document/d/18E7jaJEv43JHhhHHRuGolu_DX54voueo2YwH5gBFQUI)
 - [회의 시간 입력](https://www.when2meet.com/?39622816-pPWgN)
+- [DB 컬럼 사전 — 11개 테이블·57개 컬럼](docs/db-column-dictionary.md)
+- [1NF → 2NF → 3NF 정규화 과정](docs/normalization.md)
 
 ## 역할
 | 담당자 | 담당 |
