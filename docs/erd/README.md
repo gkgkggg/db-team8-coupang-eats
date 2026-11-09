@@ -16,19 +16,19 @@
 
 전체 ERD에서 화면별로 사용하는 테이블을 발췌했다.
 
-### View 1: 홈 — 전지우
+### View 1: 홈 — 홈 담당
 
 [PNG 원본](db8-erd-home.png) · [SVG 원본](db8-erd-home.svg)
 
 ![홈 ERD](db8-erd-home.png)
 
-### View 2: 마이이츠·즐겨찾기 — 홍승민
+### View 2: 마이이츠·즐겨찾기 — 마이이츠 담당
 
 [PNG 원본](db8-erd-my-page.png) · [SVG 원본](db8-erd-my-page.svg)
 
 ![마이이츠·즐겨찾기 ERD](db8-erd-my-page.png)
 
-### View 3: 주문내역 — 심동진
+### View 3: 주문내역 — 주문내역 담당
 
 [PNG 원본](db8-erd-orders.png) · [SVG 원본](db8-erd-orders.svg)
 

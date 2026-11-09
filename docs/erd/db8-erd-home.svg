@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="4380" height="1510" viewBox="0 0 4380 1510">
 <rect width="100%" height="100%" fill="#252525"/>
-<text x="80" y="68" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="42" font-weight="700" text-anchor="start" dominant-baseline="central">View 1 · 홈 — 전지우</text>
+<text x="80" y="68" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="42" font-weight="700" text-anchor="start" dominant-baseline="central">View 1 · 홈 — 홈 담당</text>
 <text x="82" y="122" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="central">3NF 설계안  |  5개 테이블 · 27개 컬럼 · 3개 FK 관계  |  컬럼 사전과 동일한 이름·자료형</text>
 <polyline points="240,331.0 110,331.0 110,893.0 240,893.0" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
 <polyline points="3020,331.0 2840,331.0 2840,851.0 2760,851.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>

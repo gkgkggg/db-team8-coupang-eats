@@ -6,14 +6,14 @@ userId를 경로·파라미터로 전달하는 것은 로컬 샘플 테스트 �
 
 | View | 담당자 | 메서드 | 경로 | 목적 |
 | --- | --- | --- | --- | --- |
-| 홈 | 전지우 | GET | /api/home?userId=1&categoryId=2&keyword=치킨 | 주소·카테고리·가게 목록 |
-| 마이이츠 | 홍승민 | GET | /api/users/1/summary | 사용자·리뷰·도움·즐겨찾기 수 |
-| 마이이츠 | 홍승민 | GET | /api/users/1/favorites | 즐겨찾기 목록 |
-| 마이이츠 | 홍승민 | POST | /api/users/1/favorites | 즐겨찾기 추가 |
-| 마이이츠 | 홍승민 | DELETE | /api/users/1/favorites/3 | 즐겨찾기 해제 |
-| 주문내역 | 심동진 | GET | /api/users/1/orders?status=completed | 과거 주문 |
-| 주문내역 | 심동진 | GET | /api/users/1/orders?status=preparing | 준비 중 주문 |
-| 주문내역 | 심동진 | GET | /api/orders/101 | 주문 상세 |
+| 홈 | 홈 담당 | GET | /api/home?userId=1&categoryId=2&keyword=치킨 | 주소·카테고리·가게 목록 |
+| 마이이츠 | 마이이츠 담당 | GET | /api/users/1/summary | 사용자·리뷰·도움·즐겨찾기 수 |
+| 마이이츠 | 마이이츠 담당 | GET | /api/users/1/favorites | 즐겨찾기 목록 |
+| 마이이츠 | 마이이츠 담당 | POST | /api/users/1/favorites | 즐겨찾기 추가 |
+| 마이이츠 | 마이이츠 담당 | DELETE | /api/users/1/favorites/3 | 즐겨찾기 해제 |
+| 주문내역 | 주문내역 담당 | GET | /api/users/1/orders?status=completed | 과거 주문 |
+| 주문내역 | 주문내역 담당 | GET | /api/users/1/orders?status=preparing | 준비 중 주문 |
+| 주문내역 | 주문내역 담당 | GET | /api/orders/101 | 주문 상세 |
 
 즐겨찾기 추가 JSON: `{"storeId": 3}`
 

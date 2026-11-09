@@ -262,7 +262,7 @@ def main():
     e=[make_edge(n,'Users','Addresses','UserID','L','L',rail(110),(110,590)),
        make_edge(n,'Stores','StoreCategories','StoreID','L','R',rail(2840),(2840,620)),
        make_edge(n,'Categories','StoreCategories','CategoryID','L','R',rail(2920),(2920,1010))]
-    reports.append(render('db8-erd-home','View 1 · 홈 — 전지우',n,4380,1510,e,1290))
+    reports.append(render('db8-erd-home','View 1 · 홈 — 홈 담당',n,4380,1510,e,1290))
 
     n={'Users':(240,220),'Favorites':(1620,220),'Stores':(3000,220),'ReviewHelpful':(240,840),'Reviews':(1620,840),'Orders':(3000,840),'Addresses':(240,1460)}
     e=[make_edge(n,'Users','Favorites','UserID','R','L'),
@@ -273,7 +273,7 @@ def main():
        make_edge(n,'Stores','Orders','StoreID','R','R',rail(4250),(4250,750)),
        make_edge(n,'Orders','Reviews','OrderID','L','R',rail(2860)),
        make_edge(n,'Reviews','ReviewHelpful','ReviewID','L','R',rail(1490))]
-    reports.append(render('db8-erd-my-page','View 2 · 마이이츠·즐겨찾기 — 홍승민',n,4380,2240,e,2020))
+    reports.append(render('db8-erd-my-page','View 2 · 마이이츠·즐겨찾기 — 마이이츠 담당',n,4380,2240,e,2020))
 
     n={'Users':(240,220),'Orders':(1620,220),'Stores':(3000,220),'Reviews':(240,840),'OrderItems':(1620,840),'Menus':(3000,840)}
     e=[make_edge(n,'Users','Orders','UserID','R','L',rail(1490)),
@@ -282,7 +282,7 @@ def main():
        make_edge(n,'Orders','OrderItems','OrderID','L','L',rail(1510),(1510,590)),
        make_edge(n,'Orders','Reviews','OrderID','L','R',rail(1550),(1550,710)),
        make_edge(n,'Menus','OrderItems','MenuID','L','R',rail(2860))]
-    reports.append(render('db8-erd-orders','View 3 · 주문내역 — 심동진',n,4380,1510,e,1290))
+    reports.append(render('db8-erd-orders','View 3 · 주문내역 — 주문내역 담당',n,4380,1510,e,1290))
     print(json.dumps({'figures':reports,'validated_table_count':11,'validated_column_count':57,'validated_fk_count':13},ensure_ascii=False))
 
 if __name__=='__main__':
