@@ -1,0 +1,794 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4380" height="2240" viewBox="0 0 4380 2240">
+<rect width="100%" height="100%" fill="#252525"/>
+<text x="80" y="68" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="42" font-weight="700" text-anchor="start" dominant-baseline="central">View 2 · 마이이츠·즐겨찾기 — 홍승민</text>
+<text x="82" y="122" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="central">3NF 설계안  |  7개 테이블 · 40개 컬럼 · 8개 FK 관계  |  컬럼 사전과 동일한 이름·자료형</text>
+<polyline points="1360,331.0 1620,331.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
+<polyline points="3000,331.0 2860,331.0 2860,373.0 2740,373.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
+<polyline points="240,331.0 140,331.0 140,951.0 240,951.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
+<polyline points="240,331.0 70,331.0 70,1613.0 240,1613.0" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
+<polyline points="1360,331.0 1490,331.0 1490,760 2900,760 2900,993.0 3000,993.0" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
+<polyline points="4120,331.0 4250,331.0 4250,1035.0 4120,1035.0" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
+<circle cx="2900" cy="951.0" r="9" fill="#252525" stroke="#252525" stroke-width="1"/>
+<polyline points="3000,951.0 2860,951.0 2860,993.0 2740,993.0" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
+<polyline points="1620,951.0 1490,951.0 1490,993.0 1360,993.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
+<rect x="237" y="217" width="1126" height="264" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="240" y="220" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="254" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">사용자</text>
+<text x="1346" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Users</text>
+<rect x="240" y="274" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="250" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="290" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="460" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="760" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="850" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="1080" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="1210" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="240" y="310" width="1120" height="42" fill="#49351e" stroke="#161618" stroke-width="2"/>
+<circle cx="253" cy="331.0" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="259,331.0 272,331.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="266,331.0 266,337.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="272,331.0 272,336.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="250" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,310 280,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">사용자 ID</text>
+<polyline points="450,310 450,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">UserID</text>
+<polyline points="750,310 750,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="331.0" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK</text>
+<polyline points="840,310 840,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="1070,310 1070,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,310 1200,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="331.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="240" y="352" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="250" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,352 280,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">사용자명</text>
+<polyline points="450,352 450,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">UserName</text>
+<polyline points="750,352 750,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="373.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,352 840,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(50)</text>
+<polyline points="1070,352 1070,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,352 1200,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="373.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="394" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="250" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,394 280,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">전화번호</text>
+<polyline points="450,394 450,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">UserPhone</text>
+<polyline points="750,394 750,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,394 840,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(20)</text>
+<polyline points="1070,394 1070,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="1200,394 1200,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="436" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="250" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,436 280,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="450,436 450,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="750,436 750,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="457.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,436 840,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="1070,436 1070,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,436 1200,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="457.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="1617" y="217" width="1126" height="222" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="1620" y="220" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="1634" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">즐겨찾기</text>
+<text x="2726" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Favorites</text>
+<rect x="1620" y="274" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="1630" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="1670" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="1840" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="2140" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="2230" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="2460" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="2590" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="1620" y="310" width="1120" height="42" fill="#193c40" stroke="#161618" stroke-width="2"/>
+<circle cx="1633" cy="331.0" r="6" fill="#252525" stroke="#7ed4dc" stroke-width="2"/>
+<polyline points="1639,331.0 1652,331.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1646,331.0 1646,337.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1652,331.0 1652,336.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<text x="1630" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,310 1660,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">사용자 ID</text>
+<polyline points="1830,310 1830,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">UserID</text>
+<polyline points="2130,310 2130,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="331.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK/FK</text>
+<polyline points="2220,310 2220,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="2450,310 2450,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,310 2580,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="331.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="1620" y="352" width="1120" height="42" fill="#193c40" stroke="#161618" stroke-width="2"/>
+<circle cx="1633" cy="373.0" r="6" fill="#252525" stroke="#7ed4dc" stroke-width="2"/>
+<polyline points="1639,373.0 1652,373.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1646,373.0 1646,379.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1652,373.0 1652,378.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<text x="1630" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,352 1660,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">가게 ID</text>
+<polyline points="1830,352 1830,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">StoreID</text>
+<polyline points="2130,352 2130,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="373.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK/FK</text>
+<polyline points="2220,352 2220,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="2450,352 2450,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,352 2580,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="373.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="1620" y="394" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="1630" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,394 1660,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="1830,394 1830,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="2130,394 2130,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="2220,394 2220,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="2450,394 2450,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,394 2580,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="2997" y="217" width="1126" height="474" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="3000" y="220" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="3014" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">가게</text>
+<text x="4106" y="247.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Stores</text>
+<rect x="3000" y="274" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="3010" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="3050" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="3220" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="3520" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="3610" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="3840" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="3970" y="292.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="3000" y="310" width="1120" height="42" fill="#49351e" stroke="#161618" stroke-width="2"/>
+<circle cx="3013" cy="331.0" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="3019,331.0 3032,331.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3026,331.0 3026,337.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3032,331.0 3032,336.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="3010" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,310 3040,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">가게 ID</text>
+<polyline points="3210,310 3210,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">StoreID</text>
+<polyline points="3510,310 3510,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="331.0" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK</text>
+<polyline points="3600,310 3600,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="3830,310 3830,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="331.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,310 3960,352" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="331.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="3000" y="352" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,352 3040,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">가게명</text>
+<polyline points="3210,352 3210,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">StoreName</text>
+<polyline points="3510,352 3510,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="373.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,352 3600,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(100)</text>
+<polyline points="3830,352 3830,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="373.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,352 3960,394" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="373.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="394" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,394 3040,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">가게 전화번호</text>
+<polyline points="3210,394 3210,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">StorePhone</text>
+<polyline points="3510,394 3510,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,394 3600,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="415.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(20)</text>
+<polyline points="3830,394 3830,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="3960,394 3960,436" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="415.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="436" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,436 3040,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">가게 주소</text>
+<polyline points="3210,436 3210,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">StoreAddress</text>
+<polyline points="3510,436 3510,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="457.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,436 3600,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(255)</text>
+<polyline points="3830,436 3830,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="457.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,436 3960,478" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="457.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="478" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="499.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,478 3040,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="499.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="19" font-weight="400" text-anchor="start" dominant-baseline="central">가게 대표 이미지</text>
+<polyline points="3210,478 3210,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="499.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">StoreImageURL</text>
+<polyline points="3510,478 3510,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="499.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,478 3600,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="499.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(500)</text>
+<polyline points="3830,478 3830,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="499.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="3960,478 3960,520" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="499.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="520" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="541.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,520 3040,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="541.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">최소 주문 금액</text>
+<polyline points="3210,520 3210,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="541.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">MinimumOrderAmount</text>
+<polyline points="3510,520 3510,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="541.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,520 3600,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="541.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DECIMAL(10,0)</text>
+<polyline points="3830,520 3830,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="541.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,520 3960,562" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="541.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="562" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="583.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,562 3040,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="583.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">배달비</text>
+<polyline points="3210,562 3210,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="583.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DeliveryFee</text>
+<polyline points="3510,562 3510,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="583.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,562 3600,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="583.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DECIMAL(10,0)</text>
+<polyline points="3830,562 3830,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="583.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,562 3960,604" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="583.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="604" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="625.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,604 3040,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="625.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">기본 예상 분</text>
+<polyline points="3210,604 3210,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="625.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">EstimatedDeliveryMinutes</text>
+<polyline points="3510,604 3510,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="625.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,604 3600,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="625.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">SMALLINT UNSIGNED</text>
+<polyline points="3830,604 3830,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="625.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="3960,604 3960,646" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="625.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="646" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="667.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,646 3040,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="667.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주문 가능 여부</text>
+<polyline points="3210,646 3210,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="667.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">IsOpen</text>
+<polyline points="3510,646 3510,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="667.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,646 3600,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="667.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BOOLEAN</text>
+<polyline points="3830,646 3830,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="667.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,646 3960,688" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="667.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">TRUE</text>
+<rect x="237" y="837" width="1126" height="222" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="240" y="840" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="254" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">리뷰 도움 반응</text>
+<text x="1346" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">ReviewHelpful</text>
+<rect x="240" y="894" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="250" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="290" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="460" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="760" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="850" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="1080" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="1210" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="240" y="930" width="1120" height="42" fill="#193c40" stroke="#161618" stroke-width="2"/>
+<circle cx="253" cy="951.0" r="6" fill="#252525" stroke="#7ed4dc" stroke-width="2"/>
+<polyline points="259,951.0 272,951.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="266,951.0 266,957.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="272,951.0 272,956.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<text x="250" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,930 280,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">사용자 ID</text>
+<polyline points="450,930 450,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">UserID</text>
+<polyline points="750,930 750,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="951.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK/FK</text>
+<polyline points="840,930 840,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="1070,930 1070,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,930 1200,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="951.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="972" width="1120" height="42" fill="#193c40" stroke="#161618" stroke-width="2"/>
+<circle cx="253" cy="993.0" r="6" fill="#252525" stroke="#7ed4dc" stroke-width="2"/>
+<polyline points="259,993.0 272,993.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="266,993.0 266,999.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="272,993.0 272,998.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<text x="250" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,972 280,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">리뷰 ID</text>
+<polyline points="450,972 450,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">ReviewID</text>
+<polyline points="750,972 750,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="993.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK/FK</text>
+<polyline points="840,972 840,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="1070,972 1070,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,972 1200,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="993.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1014" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1014 280,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="450,1014 450,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="750,1014 750,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1035.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1014 840,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="1070,1014 1070,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1014 1200,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1035.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="1617" y="837" width="1126" height="306" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="1620" y="840" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="1634" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">주문 리뷰</text>
+<text x="2726" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Reviews</text>
+<rect x="1620" y="894" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="1630" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="1670" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="1840" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="2140" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="2230" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="2460" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="2590" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="1620" y="930" width="1120" height="42" fill="#49351e" stroke="#161618" stroke-width="2"/>
+<circle cx="1633" cy="951.0" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="1639,951.0 1652,951.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1646,951.0 1646,957.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1652,951.0 1652,956.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="1630" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,930 1660,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">리뷰 ID</text>
+<polyline points="1830,930 1830,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">ReviewID</text>
+<polyline points="2130,930 2130,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="951.0" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK</text>
+<polyline points="2220,930 2220,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="2450,930 2450,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,930 2580,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="951.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="1620" y="972" width="1120" height="42" fill="#332b32" stroke="#161618" stroke-width="2"/>
+<circle cx="1633" cy="993.0" r="6" fill="#252525" stroke="#d9a0b4" stroke-width="2"/>
+<polyline points="1639,993.0 1652,993.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1646,993.0 1646,999.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1652,993.0 1652,998.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="1630" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,972 1660,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주문 ID</text>
+<polyline points="1830,972 1830,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">OrderID</text>
+<polyline points="2130,972 2130,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="993.0" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">FK/UQ</text>
+<polyline points="2220,972 2220,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="2450,972 2450,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,972 2580,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="993.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="1620" y="1014" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="1630" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,1014 1660,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">별점</text>
+<polyline points="1830,1014 1830,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">Rating</text>
+<polyline points="2130,1014 2130,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="1035.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="2220,1014 2220,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">TINYINT UNSIGNED</text>
+<polyline points="2450,1014 2450,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,1014 2580,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="1035.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="1620" y="1056" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="1630" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,1056 1660,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">리뷰 내용</text>
+<polyline points="1830,1056 1830,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">Content</text>
+<polyline points="2130,1056 2130,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="1077.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="2220,1056 2220,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">TEXT</text>
+<polyline points="2450,1056 2450,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="1077.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="2580,1056 2580,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="1077.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="1620" y="1098" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="1630" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="1660,1098 1660,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1670" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="1830,1098 1830,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1840" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="2130,1098 2130,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2140" y="1119.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="2220,1098 2220,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2230" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="2450,1098 2450,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2460" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="2580,1098 2580,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="2590" y="1119.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="2997" y="837" width="1126" height="432" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="3000" y="840" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="3014" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">주문 기본 정보</text>
+<text x="4106" y="867.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Orders</text>
+<rect x="3000" y="894" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="3010" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="3050" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="3220" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="3520" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="3610" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="3840" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="3970" y="912.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="3000" y="930" width="1120" height="42" fill="#49351e" stroke="#161618" stroke-width="2"/>
+<circle cx="3013" cy="951.0" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="3019,951.0 3032,951.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3026,951.0 3026,957.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3032,951.0 3032,956.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="3010" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,930 3040,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">주문 ID</text>
+<polyline points="3210,930 3210,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">OrderID</text>
+<polyline points="3510,930 3510,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="951.0" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK</text>
+<polyline points="3600,930 3600,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="3830,930 3830,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="951.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,930 3960,972" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="951.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="3000" y="972" width="1120" height="42" fill="#332b32" stroke="#161618" stroke-width="2"/>
+<circle cx="3013" cy="993.0" r="6" fill="#252525" stroke="#d9a0b4" stroke-width="2"/>
+<polyline points="3019,993.0 3032,993.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3026,993.0 3026,999.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3032,993.0 3032,998.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="3010" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,972 3040,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">사용자 ID</text>
+<polyline points="3210,972 3210,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">UserID</text>
+<polyline points="3510,972 3510,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="993.0" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">FK</text>
+<polyline points="3600,972 3600,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="3830,972 3830,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="993.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,972 3960,1014" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="993.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1014" width="1120" height="42" fill="#332b32" stroke="#161618" stroke-width="2"/>
+<circle cx="3013" cy="1035.0" r="6" fill="#252525" stroke="#d9a0b4" stroke-width="2"/>
+<polyline points="3019,1035.0 3032,1035.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3026,1035.0 3026,1041.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="3032,1035.0 3032,1040.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="3010" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1014 3040,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">가게 ID</text>
+<polyline points="3210,1014 3210,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">StoreID</text>
+<polyline points="3510,1014 3510,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1035.0" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">FK</text>
+<polyline points="3600,1014 3600,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="3830,1014 3830,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1035.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1014 3960,1056" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1035.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1056" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1056 3040,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주문 시각</text>
+<polyline points="3210,1056 3210,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">OrderedAt</text>
+<polyline points="3510,1056 3510,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1077.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,1056 3600,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="3830,1056 3830,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1077.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1056 3960,1098" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1077.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1098" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1098 3040,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주문 상태</text>
+<polyline points="3210,1098 3210,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">OrderStatus</text>
+<polyline points="3510,1098 3510,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1119.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,1098 3600,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(20)</text>
+<polyline points="3830,1098 3830,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1119.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1098 3960,1140" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1119.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1140" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="1161.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1140 3040,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1161.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주문 당시 주소</text>
+<polyline points="3210,1140 3210,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1161.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DeliveryAddressText</text>
+<polyline points="3510,1140 3510,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1161.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,1140 3600,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1161.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(300)</text>
+<polyline points="3830,1140 3830,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1161.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1140 3960,1182" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1161.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1182" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="1203.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1182 3040,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1203.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">배달비</text>
+<polyline points="3210,1182 3210,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1203.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DeliveryFee</text>
+<polyline points="3510,1182 3510,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1203.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,1182 3600,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1203.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DECIMAL(10,0)</text>
+<polyline points="3830,1182 3830,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1203.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1182 3960,1224" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1203.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="3000" y="1224" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="3010" y="1245.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="3040,1224 3040,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3050" y="1245.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">할인액</text>
+<polyline points="3210,1224 3210,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3220" y="1245.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DiscountAmount</text>
+<polyline points="3510,1224 3510,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3520" y="1245.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="3600,1224 3600,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3610" y="1245.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DECIMAL(10,0)</text>
+<polyline points="3830,1224 3830,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3840" y="1245.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="3960,1224 3960,1266" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="3970" y="1245.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">0</text>
+<rect x="237" y="1457" width="1126" height="432" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="240" y="1460" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
+<text x="254" y="1487.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">사용자 주소</text>
+<text x="1346" y="1487.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">Addresses</text>
+<rect x="240" y="1514" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
+<text x="250" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<text x="290" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">논리명</text>
+<text x="460" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">컬럼명</text>
+<text x="760" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">키</text>
+<text x="850" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">자료형(MySQL)</text>
+<text x="1080" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<text x="1210" y="1532.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central">기본값(안)</text>
+<rect x="240" y="1550" width="1120" height="42" fill="#49351e" stroke="#161618" stroke-width="2"/>
+<circle cx="253" cy="1571.0" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="259,1571.0 272,1571.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="266,1571.0 266,1577.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="272,1571.0 272,1576.0" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="250" y="1571.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1550 280,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1571.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">주소 ID</text>
+<polyline points="450,1550 450,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1571.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">AddressID</text>
+<polyline points="750,1550 750,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1571.0" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="700" text-anchor="start" dominant-baseline="central">PK</text>
+<polyline points="840,1550 840,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1571.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="1070,1550 1070,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1571.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1550 1200,1592" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1571.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<rect x="240" y="1592" width="1120" height="42" fill="#332b32" stroke="#161618" stroke-width="2"/>
+<circle cx="253" cy="1613.0" r="6" fill="#252525" stroke="#d9a0b4" stroke-width="2"/>
+<polyline points="259,1613.0 272,1613.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="266,1613.0 266,1619.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="272,1613.0 272,1618.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="250" y="1613.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1592 280,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1613.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">사용자 ID</text>
+<polyline points="450,1592 450,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1613.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">UserID</text>
+<polyline points="750,1592 750,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1613.0" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">FK</text>
+<polyline points="840,1592 840,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1613.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BIGINT UNSIGNED</text>
+<polyline points="1070,1592 1070,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1613.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1592 1200,1634" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1613.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1634" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1655.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1634 280,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1655.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">주소 별칭</text>
+<polyline points="450,1634 450,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1655.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">AddressLabel</text>
+<polyline points="750,1634 750,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1655.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1634 840,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1655.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(20)</text>
+<polyline points="1070,1634 1070,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1655.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1634 1200,1676" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1655.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1676" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1697.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1676 280,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1697.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">우편번호</text>
+<polyline points="450,1676 450,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1697.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">PostalCode</text>
+<polyline points="750,1676 750,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1697.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1676 840,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1697.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CHAR(5)</text>
+<polyline points="1070,1676 1070,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1697.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="1200,1676 1200,1718" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1697.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1718" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1739.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1718 280,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1739.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">기본 주소</text>
+<polyline points="450,1718 450,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1739.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">AddressLine1</text>
+<polyline points="750,1718 750,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1739.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1718 840,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1739.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(200)</text>
+<polyline points="1070,1718 1070,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1739.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1718 1200,1760" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1739.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1760" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1781.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1760 280,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1781.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">상세 주소</text>
+<polyline points="450,1760 450,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1781.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">AddressLine2</text>
+<polyline points="750,1760 750,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1781.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1760 840,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1781.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">VARCHAR(100)</text>
+<polyline points="1070,1760 1070,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1781.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NULL</text>
+<polyline points="1200,1760 1200,1802" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1781.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="240" y="1802" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1823.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1802 280,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1823.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">기본 주소 여부</text>
+<polyline points="450,1802 450,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1823.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">IsDefault</text>
+<polyline points="750,1802 750,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1823.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1802 840,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1823.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BOOLEAN</text>
+<polyline points="1070,1802 1070,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1823.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1802 1200,1844" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1823.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">FALSE</text>
+<rect x="240" y="1844" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="250" y="1865.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="280,1844 280,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="290" y="1865.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="450,1844 450,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="460" y="1865.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="750,1844 750,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="760" y="1865.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="840,1844 840,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="850" y="1865.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="1070,1844 1070,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1080" y="1865.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1200,1844 1200,1886" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1210" y="1865.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<polyline points="1374,320.0 1374,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1383,320.0 1383,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1591,331.0 1614,319.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1591,331.0 1614,331.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1591,331.0 1614,343.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1576" cy="331.0" r="7" fill="#252525" stroke="#7ed4dc" stroke-width="3"/>
+<rect x="1443.5" y="313.0" width="93.0" height="36.0" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="1490.0" y="331.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="2986,320.0 2986,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2977,320.0 2977,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2769,373.0 2746,361.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2769,373.0 2746,373.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2769,373.0 2746,385.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="2784" cy="373.0" r="7" fill="#252525" stroke="#7ed4dc" stroke-width="3"/>
+<rect x="2883.5" y="313.0" width="93.0" height="36.0" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="2930.0" y="331.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="226,320.0 226,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="217,320.0 217,342.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,951.0 234,939.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,951.0 234,951.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,951.0 234,963.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="196" cy="951.0" r="7" fill="#252525" stroke="#7ed4dc" stroke-width="3"/>
+<rect x="93.5" y="682" width="93.0" height="36" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="140" y="700" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="226,320.0 226,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="217,320.0 217,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,1613.0 234,1601.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,1613.0 234,1613.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="211,1613.0 234,1625.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="196" cy="1613.0" r="7" fill="#252525" stroke="#d9a0b4" stroke-width="3"/>
+<rect x="23.5" y="1332" width="93.0" height="36" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="70" y="1350" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="1374,320.0 1374,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1383,320.0 1383,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2971,993.0 2994,981.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2971,993.0 2994,993.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2971,993.0 2994,1005.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="2956" cy="993.0" r="7" fill="#252525" stroke="#d9a0b4" stroke-width="3"/>
+<rect x="2153.5" y="742" width="93.0" height="36" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="2200" y="760" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="4134,320.0 4134,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="4143,320.0 4143,342.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="4149,1035.0 4126,1023.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="4149,1035.0 4126,1035.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="4149,1035.0 4126,1047.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="4164" cy="1035.0" r="7" fill="#252525" stroke="#d9a0b4" stroke-width="3"/>
+<rect x="4203.5" y="732" width="93.0" height="36" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="4250" y="750" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<polyline points="2986,940.0 2986,962.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2977,940.0 2977,962.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="2758,982.0 2758,1004.0" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="2779" cy="993.0" r="7" fill="#252525" stroke="#d9a0b4" stroke-width="3"/>
+<rect x="2886.0" y="933.0" width="88.0" height="36.0" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="2930.0" y="951.0" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..1</text>
+<polyline points="1606,940.0 1606,962.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1597,940.0 1597,962.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1389,993.0 1366,981.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1389,993.0 1366,993.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="1389,993.0 1366,1005.0" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="1404" cy="993.0" r="7" fill="#252525" stroke="#7ed4dc" stroke-width="3"/>
+<rect x="1508.5" y="933.0" width="93.0" height="36.0" fill="#252525" stroke="#252525" stroke-width="1"/>
+<text x="1555.0" y="951.0" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="central">1 : 0..N</text>
+<rect x="80" y="2020" width="4220" height="150" fill="#202023" stroke="#55555a" stroke-width="1"/>
+<text x="102" y="2048" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="24" font-weight="700" text-anchor="start" dominant-baseline="central">범례 · 기본키(Primary Key) / 외래키(Foreign Key)</text>
+<circle cx="116" cy="2087" r="6" fill="#252525" stroke="#edc955" stroke-width="2"/>
+<polyline points="122,2087 135,2087" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="129,2087 129,2093" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="135,2087 135,2092" fill="none" stroke="#edc955" stroke-width="3" stroke-linejoin="round"/>
+<text x="150" y="2087" fill="#edc955" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">PK</text>
+<circle cx="536" cy="2087" r="6" fill="#252525" stroke="#d9a0b4" stroke-width="2"/>
+<polyline points="542,2087 555,2087" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="549,2087 549,2093" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="555,2087 555,2092" fill="none" stroke="#d9a0b4" stroke-width="3" stroke-linejoin="round"/>
+<text x="570" y="2087" fill="#d9a0b4" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">FK</text>
+<circle cx="956" cy="2087" r="6" fill="#252525" stroke="#7ed4dc" stroke-width="2"/>
+<polyline points="962,2087 975,2087" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="969,2087 969,2093" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="975,2087 975,2092" fill="none" stroke="#7ed4dc" stroke-width="3" stroke-linejoin="round"/>
+<text x="990" y="2087" fill="#7ed4dc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">PK/FK: 복합키 구성</text>
+<polyline points="1530,2087 1650,2087" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
+<text x="1670" y="2087" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">실선: 식별 관계</text>
+<polyline points="2230,2087 2350,2087" fill="none" stroke="#d9a0b4" stroke-width="4" stroke-linejoin="round" stroke-dasharray="15 10"/>
+<text x="2370" y="2087" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">점선: 비식별 관계</text>
+<text x="104" y="2131" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="central">1 : 0..N = 일대다   ·   1 : 0..1 = 주문당 리뷰 최대 1개   ·   UQ = 유일 제약   ·   기본값·ID 자동 생성은 DDL 작성 시 확정</text>
+</svg>
