@@ -38,9 +38,6 @@
 5. 담당 보고서용 설명·실행 결과를 PPT·발표 담당자에게 전달합니다. 보고서 작성 방식은 11월 9일 교수님 질의 후 최종 확인합니다.
 
 ## 팀원 편집
-비공개 저장소입니다. 팀원은 GitHub 아이디를 전달해 Collaborator 초대를 받은 뒤 수락해야 push할 수 있습니다. 현재 팀원 초대는 사용자의 요청으로 보류 중입니다.
-
-권장 작업: `git pull` → 자기 작업 브랜치 → 수정·commit·push → Pull Request → 검토 후 병합. `main`에 force push하지 않습니다.
 
 브랜치 예시: `db/schema`, `feature/home`, `feature/my-page`, `feature/orders`, `docs/presentation`.
 
