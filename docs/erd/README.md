@@ -4,7 +4,7 @@
 
 [컬럼 사전](../db-column-dictionary.md) · [1NF → 2NF → 3NF 과정](../normalization.md)
 
-현재 설계안이며 DDL 작성과 MySQL 실행은 아직 진행하지 않았다. 테이블 변경 시 API 담당자와 협의하고 컬럼 사전·ERD·DDL을 함께 수정한다.
+이 구조를 schema.sql로 구현하고 MySQL에서 검증했다. 테이블 변경 시 API 담당자와 협의하고 컬럼 사전·ERD·DDL을 함께 수정한다.
 
 ## 전체 ERD
 
@@ -42,7 +42,7 @@
 - `1 : 0..N`: 자식은 부모 한 개를 참조하고 부모에는 자식이 없거나 여러 개일 수 있다. 주문 항목 최소 1개 등의 업무 규칙은 별도로 검증한다.
 - `Orders 1 : 0..1 Reviews`: `Reviews.OrderID`의 UNIQUE로 주문당 리뷰를 최대 1개로 제한한다.
 - 선이 교차하는 곳은 연결점이 아니다.
-- ID 자동 생성 방식은 DDL 작성 시 정한다.
+- 단일 ID 기본키는 AUTO_INCREMENT다. 그림의 '현재 시각'은 DEFAULT CURRENT_TIMESTAMP를 뜻한다.
 
 다대다(M:N) 관계는 `Favorites`, `StoreCategories`, `OrderItems`, `ReviewHelpful` 연결 테이블로 나눴다.
 

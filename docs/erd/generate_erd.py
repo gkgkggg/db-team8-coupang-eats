@@ -61,7 +61,7 @@ KOREAN = {
  'Quantity':'수량','UnitPriceAtOrder':'주문 당시 단가','MenuNameAtOrder':'주문 당시 메뉴명',
  'ReviewID':'리뷰 ID','Rating':'별점','Content':'리뷰 내용','IsHelpful':'도움 여부'
 }
-DEFAULTS = {'IsDefault':'FALSE','DisplayOrder':'0','IsOpen':'TRUE','IsAvailable':'TRUE','DiscountAmount':'0'}
+DEFAULTS = {'IsDefault':'FALSE','DisplayOrder':'0','IsOpen':'TRUE','IsAvailable':'TRUE','DiscountAmount':'0','CreatedAt':'현재 시각','OrderedAt':'현재 시각'}
 
 class Canvas:
     def __init__(self, width, height):
@@ -134,7 +134,7 @@ def table(c,name,pos):
     c.rect((x,y,x+W,y+TITLE_H),'#151515')
     c.text(x+14,y+TITLE_H/2,t['korean'],28,bold=True,max_width=680)
     c.text(x+W-14,y+TITLE_H/2,name,26,bold=True,align='right',max_width=380)
-    headers=['','논리명','컬럼명','키','자료형(MySQL)','NULL','기본값(안)']
+    headers=['','논리명','컬럼명','키','자료형(MySQL)','NULL','기본값']
     c.rect((x,y+TITLE_H,x+W,y+TITLE_H+HEAD_H),'#333337')
     offset=x
     for label,w in zip(headers,WIDTHS):
@@ -148,7 +148,7 @@ def table(c,name,pos):
         c.rect((x,yy,x+W,yy+ROW_H),fill,outline='#161618',width=2)
         if pk or fk: key_icon(c,x+3,yy+ROW_H/2,color)
         key='PK/FK' if pk and fk else 'PK' if pk else 'FK/UQ' if fk and uq else 'FK' if fk else 'UQ' if uq else '—'
-        default=DEFAULTS.get(r['name'],'미정' if pk and not fk or r['name']=='CreatedAt' else '—')
+        default=DEFAULTS.get(r['name'],'자동 증가' if pk and not fk else '—')
         values=['',KOREAN[r['name']],r['name'],key,r['type'],'NULL' if r['nullable']=='Y' else 'NOT NULL',default]
         offset=x
         for j,(value,w) in enumerate(zip(values,WIDTHS)):
@@ -190,7 +190,7 @@ def legend(c,x,y,available):
     c.text(x+1590,y+67,'실선: 식별 관계',22)
     c.line([(x+2150,y+67),(x+2270,y+67)],PINK,4,True)
     c.text(x+2290,y+67,'점선: 비식별 관계',22)
-    c.text(x+24,y+111,'1 : 0..N = 일대다   ·   1 : 0..1 = 주문당 리뷰 최대 1개   ·   UQ = 유일 제약   ·   기본값·ID 자동 생성은 DDL 작성 시 확정',22,max_width=available-48)
+    c.text(x+24,y+111,'1 : 0..N = 일대다   ·   1 : 0..1 = 주문당 리뷰 최대 1개   ·   UQ = 유일 제약   ·   자동 증가: AUTO_INCREMENT   ·   현재 시각: CURRENT_TIMESTAMP',22,max_width=available-48)
 
 def render(stem,title,nodes,width,height_px,edges,legend_y):
     c=Canvas(width,height_px)

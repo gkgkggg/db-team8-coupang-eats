@@ -32,7 +32,7 @@
 
 ## 컬럼 사전
 
-NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 제약이다. 자동 ID 생성·기본값·인덱스·삭제 정책은 실제 DDL 작성 시 확정한다.
+NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 제약이다. 단일 ID 기본키는 AUTO_INCREMENT, CreatedAt·OrderedAt은 DEFAULT CURRENT_TIMESTAMP로 구현했다. 나머지 기본값은 아래 각 컬럼 설명을 따른다.
 
 ### Users — 사용자
 
@@ -209,9 +209,9 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 - Quantity ≥ 1, Rating 1~5, 금액 ≥ 0, OrderStatus 허용값을 검사한다. 실제 MySQL 버전을 확인한 후 지원되는 CHECK와 API 검증으로 구현한다.
 - 한 주문의 모든 메뉴는 Orders.StoreID와 같은 가게여야 한다. 단순 FK 두 개만으로 이 교차 테이블 규칙이 자동 보장되지는 않는다. 주문 작성 API의 트랜잭션에서 검사한다.
 - 주문 할인액이 소계+배달비를 넘지 않는지 주문 항목과 함께 트랜잭션에서 검사한다. 타 테이블 집계를 CHECK에 넣지 않는다.
-- 기본 주소는 사용자별 최대 1개를 허용한다. 여러 일반 주소를 막는 UNIQUE(UserID, IsDefault)는 사용하지 않는다. 주소 변경 트랜잭션과 필요한 별도 제약 설계를 검토한다.
+- 기본 주소는 사용자별 최대 1개를 허용한다. Addresses에 CASE WHEN IsDefault=TRUE THEN UserID ELSE NULL END의 함수 기반 UNIQUE 인덱스를 두었다. 일반 주소는 여러 개 저장할 수 있고 기본 주소 변경은 트랜잭션으로 처리한다.
 - 리뷰 작성자는 Reviews.OrderID → Orders.UserID로 확인한다. 주문 가게는 Orders.StoreID에서 가져와 Reviews에 중복 저장하지 않는다.
-- 주문·주문 항목·리뷰는 이력 보존을 위해 참조 중인 사용자·가게·메뉴를 임의 삭제하지 않는다. 메뉴는 IsAvailable, 가게는 IsOpen 등 운영 값으로 관리하고 실제 삭제 정책은 DDL 작성 전에 합의한다.
+- 부모 삭제는 RESTRICT로 제한하고 메뉴는 IsAvailable, 가게는 IsOpen으로 관리한다. 리뷰 삭제에 한해 ReviewHelpful.ReviewID를 ON DELETE CASCADE로 구현해 연결된 반응을 함께 삭제한다. 모든 외래키의 ON UPDATE는 RESTRICT다.
 
 ## 정규형 확인
 
@@ -221,7 +221,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 주문 당시 스냅샷은 현재 값과 다른 사실이다. MenuID → UnitPriceAtOrder·MenuNameAtOrder, StoreID → Orders.DeliveryFee, 현재 AddressID → 모든 주문의 DeliveryAddressText라는 종속은 가정하지 않는다.
 
-정규화 예시·함수 종속·분해 과정은 [normalization.md](normalization.md)에 있다. 이 설계안은 아직 db/schema.sql에 적용한 DDL이나 MySQL 실행 결과가 아니다.
+정규화 예시·함수 종속·분해 과정은 [normalization.md](normalization.md)에 있다. 2026-11-15에 [schema.sql](../db/schema.sql)로 구현하고 별도 MySQL에서 검증했다. 샘플 데이터와 API 구현은 별도 작업이다. [검증 기록](verification.md)
 
 ## 참고
 
