@@ -1,17 +1,17 @@
-# 세 View 데이터베이스 컬럼 사전 — 3NF 설계안
+# DB 컬럼 사전
 
-작성 기준: 2026-11-07, 팀의 홈·마이이츠/즐겨찾기·주문내역 요구사항. 담당: DB·홈·마이이츠·주문내역 담당.
+담당: DB 담당. 홈·마이이츠(즐겨찾기 포함)·주문내역에서 사용할 테이블과 속성을 정리한다. 2026-11-15 schema.sql 기준이다.
 
 ## 설계 범위·업무 규칙
 
-- 대상 View는 홈 / 마이이츠(즐겨찾기 포함) / 주문내역 3개다. 아래 11개 테이블·58개 컬럼은 팀 검토용 설계안이다. 실제 서비스 내부 DB를 복제했다는 뜻은 아니다.
-- 이름·전화번호·날짜·메뉴명·상호는 고유하다고 가정하지 않는다. 식별은 ID로 한다. Categories.CategoryName만 이 초안에서 별도 UNIQUE를 제안한다.
+- 세 화면 구현을 위해 설계한 11개 테이블·58개 컬럼이다.
+- 이름·전화번호·날짜·메뉴명·상호는 고유하다고 가정하지 않는다. 식별은 ID로 한다. Categories.CategoryName에는 UNIQUE를 적용한다.
 - 한 주문은 한 사용자·한 가게에 속한다. 한 메뉴는 한 가게에 속하며 MenuID를 다른 가게에 재배정하지 않는다.
 - 메뉴 옵션·추가 구성은 제외한다. 한 주문에서 같은 MenuID는 한 항목으로 합산한다. 따라서 OrderItems의 복합 기본키는 (OrderID, MenuID)다. 서로 다른 옵션·단가의 같은 메뉴를 한 주문에 넣어야 하면 OrderLineNo와 옵션 테이블로 재설계한다.
 - 한 주문의 리뷰는 최대 1개다. 즐겨찾기와 리뷰 도움 반응은 사용자·대상 쌍별로 최대 1개다. ReviewHelpful.IsHelpful은 TRUE=도움이 돼요, FALSE=도움이 안 돼요이며 반응 취소는 행 삭제로 처리한다.
 - 현재 사용자·가게·메뉴 정보와 주문 당시의 메뉴명·단가·배송 주소·적용 배달비를 구분한다. 현재 값이 바뀌어도 주문 시점 값은 유지한다.
 - 주문내역의 상호는 현재 Stores.StoreName을 표시한다. 과거 상호 보존이 필요하면 별도 StoreNameAtOrder를 검토한다.
-- 금액은 원(KRW) 단위의 DECIMAL(10,0)으로 제안한다. 실제 결제 승인·취소·환불 처리와 쿠폰·광고·스탬프·로그인 구현은 이번 기본 설계 범위에서 제외한다.
+- 금액은 원(KRW) 단위의 DECIMAL(10,0)으로 저장한다. 실제 결제 승인·취소·환불 처리와 쿠폰·광고·스탬프·로그인 구현은 이번 기본 설계 범위에서 제외한다.
 - API 서버 언어·실행 포트는 미정이다. 팀원은 Postman의 로컬 baseUrl로 자기 서버 주소를 설정한다.
 
 ## 테이블 개요
@@ -32,13 +32,13 @@
 
 ## 컬럼 사전
 
-NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 제약이다. 단일 ID 기본키는 AUTO_INCREMENT, CreatedAt·OrderedAt은 DEFAULT CURRENT_TIMESTAMP로 구현했다. 나머지 기본값은 아래 각 컬럼 설명을 따른다.
+NULL 허용은 N=불가, Y=허용이다. FK는 외래키(Foreign Key), UNIQUE는 유일 제약이다. 단일 ID 기본키는 AUTO_INCREMENT, CreatedAt·OrderedAt은 DEFAULT CURRENT_TIMESTAMP로 구현했다. 나머지 기본값은 아래 각 컬럼 설명을 따른다.
 
 ### Users — 사용자
 
 사용 View: 마이이츠 / 홈·주문 공통 식별. PK: (UserID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `UserID` | `BIGINT UNSIGNED` | PK | N | 사용자 식별자 |
 | `UserName` | `VARCHAR(50)` | - | N | 현재 표시 이름; 고유하지 않음 |
@@ -49,7 +49,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 홈 선택 주소 / 마이이츠 주소 관리. PK: (AddressID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `AddressID` | `BIGINT UNSIGNED` | PK | N | 주소 식별자 |
 | `UserID` | `BIGINT UNSIGNED` | FK → Users.UserID | N | 주소 소유 사용자 |
@@ -64,10 +64,10 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 홈 카테고리. PK: (CategoryID). 대체키: (CategoryName).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `CategoryID` | `INT UNSIGNED` | PK | N | 카테고리 식별자 |
-| `CategoryName` | `VARCHAR(30)` | UNIQUE | N | 치킨·버거 등; 이 초안에서는 이름 중복 금지 |
+| `CategoryName` | `VARCHAR(30)` | UNIQUE | N | 치킨·버거 등; 이름 중복 금지 |
 | `CategoryImageURL` | `VARCHAR(500)` | - | Y | 카테고리 이미지 주소 |
 | `DisplayOrder` | `INT UNSIGNED` | - | N | 표시 순서; 기본값 0; 동률 허용 |
 
@@ -75,7 +75,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 홈·즐겨찾기·주문내역. PK: (StoreID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `StoreID` | `BIGINT UNSIGNED` | PK | N | 가게 식별자 |
 | `StoreName` | `VARCHAR(100)` | - | N | 현재 가게 이름; 중복 가능 |
@@ -91,7 +91,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 홈 카테고리 필터. PK: (StoreID, CategoryID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `StoreID` | `BIGINT UNSIGNED` | PK(1)·FK → Stores.StoreID | N | 분류할 가게 |
 | `CategoryID` | `INT UNSIGNED` | PK(2)·FK → Categories.CategoryID | N | 연결할 음식 카테고리 |
@@ -100,7 +100,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 홈 보조 데이터 / 주문내역 메뉴 연결. PK: (MenuID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `MenuID` | `BIGINT UNSIGNED` | PK | N | 메뉴 식별자; 가게 간 재사용·재배정하지 않음 |
 | `StoreID` | `BIGINT UNSIGNED` | FK → Stores.StoreID | N | 메뉴를 판매하는 가게 |
@@ -113,7 +113,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 마이이츠·즐겨찾기. PK: (UserID, StoreID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `UserID` | `BIGINT UNSIGNED` | PK(1)·FK → Users.UserID | N | 즐겨찾기한 사용자 |
 | `StoreID` | `BIGINT UNSIGNED` | PK(2)·FK → Stores.StoreID | N | 즐겨찾기한 가게 |
@@ -123,7 +123,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 주문내역 / 리뷰 사용자·가게 연결. PK: (OrderID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `OrderID` | `BIGINT UNSIGNED` | PK | N | 주문 식별자 |
 | `UserID` | `BIGINT UNSIGNED` | FK → Users.UserID | N | 주문한 사용자 |
@@ -138,7 +138,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 주문내역 메뉴·수량·금액. PK: (OrderID, MenuID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `OrderID` | `BIGINT UNSIGNED` | PK(1)·FK → Orders.OrderID | N | 주문 |
 | `MenuID` | `BIGINT UNSIGNED` | PK(2)·FK → Menus.MenuID | N | 주문 메뉴 |
@@ -150,7 +150,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 마이이츠 내 리뷰 수 / 주문내역 리뷰 여부. PK: (ReviewID). 대체키: (OrderID).
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `ReviewID` | `BIGINT UNSIGNED` | PK | N | 리뷰 식별자 |
 | `OrderID` | `BIGINT UNSIGNED` | UNIQUE·FK → Orders.OrderID | N | 대상 주문; 주문당 리뷰 최대 1개 |
@@ -162,7 +162,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 사용 View: 리뷰의 도움·비도움 반응 / 마이이츠의 내 리뷰가 받은 도움 수. PK: (UserID, ReviewID). UserID는 반응을 누른 사용자이며 리뷰 작성자는 Orders.UserID로 확인한다.
 
-| 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
+| 컬럼 | MySQL 자료형 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
 | `UserID` | `BIGINT UNSIGNED` | PK(1)·FK → Users.UserID | N | 반응을 누른 사용자 |
 | `ReviewID` | `BIGINT UNSIGNED` | PK(2)·FK → Reviews.ReviewID | N | 반응 대상 리뷰 |
@@ -206,7 +206,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 - ReviewHelpful의 복합키 (UserID, ReviewID)로 한 사용자·리뷰의 반응을 1개로 제한한다. TRUE와 FALSE를 동시에 별도 행으로 저장하지 않는다.
 - Users M:N Stores → Favorites. Stores M:N Categories → StoreCategories. Orders M:N Menus → OrderItems. Users M:N Reviews(도움 반응) → ReviewHelpful.
 - PK·FK 컬럼의 자료형과 UNSIGNED 여부를 맞춘다. FK는 PK 또는 명시적 UNIQUE NOT NULL 키를 참조하도록 한다.
-- Quantity ≥ 1, Rating 1~5, 금액 ≥ 0, OrderStatus 허용값을 검사한다. 실제 MySQL 버전을 확인한 후 지원되는 CHECK와 API 검증으로 구현한다.
+- Quantity ≥ 1, Rating 1~5, 금액 ≥ 0, OrderStatus 허용값을 검사한다. MySQL 8.0.16 이상의 CHECK로 제한하고 API에서도 입력을 확인한다.
 - 한 주문의 모든 메뉴는 Orders.StoreID와 같은 가게여야 한다. 단순 FK 두 개만으로 이 교차 테이블 규칙이 자동 보장되지는 않는다. 주문 작성 API의 트랜잭션에서 검사한다.
 - 주문 할인액이 소계+배달비를 넘지 않는지 주문 항목과 함께 트랜잭션에서 검사한다. 타 테이블 집계를 CHECK에 넣지 않는다.
 - 기본 주소는 사용자별 최대 1개를 허용한다. Addresses에 CASE WHEN IsDefault=TRUE THEN UserID ELSE NULL END의 함수 기반 UNIQUE 인덱스를 두었다. 일반 주소는 여러 개 저장할 수 있고 기본 주소 변경은 트랜잭션으로 처리한다.
@@ -217,7 +217,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 
 업무 규칙을 함수 종속(Functional Dependency)으로 정의하면 각 기본 엔터티의 비키 속성은 식별자 전체에 종속된다. 연결 테이블은 복합키 전체에 종속되거나 비키 속성이 없다. Categories의 CategoryName, Reviews의 OrderID는 UNIQUE NOT NULL 대체 후보키이므로 이 키로 결정되는 속성도 3NF 조건에 맞는다.
 
-단순히 ID를 추가해서 3NF라고 주장하는 것이 아니라, 이름·가게 정보·현재 메뉴 정보를 소유 엔터티에 두고 부분·이행 종속을 제거한다. 아래 업무 규칙 외에 추가 종속이 발견되면 재검토한다.
+이름·가게 정보·현재 메뉴 정보를 각각의 테이블에 두어 부분·이행 종속을 제거했다. 업무 규칙이 추가되면 함수 종속을 다시 확인한다.
 
 주문 당시 스냅샷은 현재 값과 다른 사실이다. MenuID → UnitPriceAtOrder·MenuNameAtOrder, StoreID → Orders.DeliveryFee, 현재 AddressID → 모든 주문의 DeliveryAddressText라는 종속은 가정하지 않는다.
 

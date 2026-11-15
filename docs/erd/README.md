@@ -10,25 +10,25 @@
 
 [PNG 원본](db8-erd-full.png) · [SVG 원본](db8-erd-full.svg)
 
-![전체 ERD — 11개 테이블·58개 컬럼](db8-erd-full.png)
+![전체 ERD](db8-erd-full.png)
 
-## View별 확대 그림
+## 화면별 ERD
 
 전체 ERD에서 화면별로 사용하는 테이블을 발췌했다.
 
-### View 1: 홈 — 홈 담당
+### 홈
 
 [PNG 원본](db8-erd-home.png) · [SVG 원본](db8-erd-home.svg)
 
 ![홈 ERD](db8-erd-home.png)
 
-### View 2: 마이이츠·즐겨찾기 — 마이이츠 담당
+### 마이이츠·즐겨찾기
 
 [PNG 원본](db8-erd-my-page.png) · [SVG 원본](db8-erd-my-page.svg)
 
 ![마이이츠·즐겨찾기 ERD](db8-erd-my-page.png)
 
-### View 3: 주문내역 — 주문내역 담당
+### 주문내역
 
 [PNG 원본](db8-erd-orders.png) · [SVG 원본](db8-erd-orders.svg)
 
@@ -56,4 +56,4 @@ Windows, Python, Pillow가 필요하다. 저장소 루트에서 실행한다.
 python docs/erd/generate_erd.py
 ```
 
-컬럼 사전을 읽어 PNG와 SVG를 생성한다. 테이블·컬럼·FK 수, 자료형, 글자 크기와 관계선 겹침을 검사한다.
+컬럼 사전에서 PNG·SVG를 생성하고 테이블·컬럼·FK 수와 그림 배치를 확인한다.

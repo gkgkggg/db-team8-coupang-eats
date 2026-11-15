@@ -1,8 +1,6 @@
-# API 설계 초안
+# API 명세
 
-작성 기준: 2026-11-15. 서버 언어·공통 JSON 형식은 미정이다. 로컬 호스트·포트는 각자 Postman의 활성 환경 변수 `baseUrl`로 설정한다.
-
-화면별 API를 정리했다. 구현할 기능에 맞춰 필요한 항목을 선택한다.
+2026-11-15 기준 설계다. API 구현 전이며 서버 언어와 공통 JSON 형식은 팀에서 정한다. 아래 목록에서 구현할 기능을 선택하고, 로컬 서버 주소는 Postman 환경 변수 `baseUrl`로 설정한다.
 
 ### 기본 API
 
@@ -26,7 +24,7 @@
 
 ### 홈
 
-담당: 홈 담당. 홈 전체 응답을 한 번에 받으면 기본 API만 사용한다. 아래 조회를 나눠 호출하는 방식과 둘 중 하나를 선택할 수 있다. 가게 정보·메뉴는 같은 View의 펼침 영역이나 팝업으로 보여줄 수 있다.
+담당: 홈 담당. `/api/home`에서 한 번에 받거나 아래 API를 나눠 호출한다. 가게 상세·메뉴는 홈의 펼침 영역이나 팝업에 표시할 수 있다.
 
 | 메서드·경로 | 입력 | 기능·응답 | 사용 테이블 |
 | --- | --- | --- | --- |
@@ -35,11 +33,11 @@
 | `GET /api/stores/{storeId}` | 경로의 storeId | 가게 이름·주소·배달비·최소 주문 금액·영업 여부·별점 | Stores, Orders, Reviews |
 | `GET /api/stores/{storeId}/menus` | 경로의 storeId | 메뉴명·현재 가격·이미지·판매 가능 여부 | Menus |
 
-sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택하는 안이다. 별점과 리뷰 수는 Reviews와 Orders를 먼저 집계해 가게 목록에 연결한다. 위치·거리 기반 검색은 이번 목록에 넣지 않았다.
+정렬안: 이름순(name), 배달비순(deliveryFee), 별점순(rating). 별점과 리뷰 수는 Reviews와 Orders를 먼저 집계해 가게 목록에 연결한다. 위치·거리 기반 검색은 구현 범위에서 제외한다.
 
 ### 마이이츠·주소·리뷰
 
-담당: 마이이츠 담당. 사용자 정보는 summary에 포함하면 별도 조회를 생략한다. 주소 조회는 홈 담당과 함께 사용하고, 주소 변경 처리는 마이이츠 담당이 맡는 안이다.
+담당: 마이이츠 담당. 사용자 정보는 summary에 포함하거나 별도로 조회한다. 주소 조회는 홈에서도 사용한다. 주소 변경 담당은 마이이츠 담당으로 제안한다.
 
 | 메서드·경로 | 입력 | 기능·응답 | 사용 테이블 |
 | --- | --- | --- | --- |
@@ -58,7 +56,7 @@ sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택
 - 주소를 수정·삭제해도 Orders.DeliveryAddressText에 저장된 과거 배송 주소는 바꾸지 않는다.
 - 반응 입력은 `{"isHelpful":true}` 또는 `{"isHelpful":false}`다. isHelpful은 필수 Boolean이며 누락·null·문자열은 400으로 처리한다. 같은 사용자·리뷰의 반응이 있으면 IsHelpful만 바꾸고 CreatedAt은 유지한다. 같은 값을 재요청하면 그대로 유지한다.
 - 반응 취소는 DELETE로 행을 삭제한다. 행이 없는 상태는 미참여이며 FALSE는 '도움이 안 돼요'다.
-- summary의 helpfulCount는 내 리뷰가 받은 IsHelpful=TRUE만 집계한다. 리뷰별 helpfulCount와 notHelpfulCount는 TRUE와 FALSE를 각각 세고, myReaction은 현재 사용자의 true/false 또는 미참여 null로 반환하는 안이다. 등록·변경·취소 후 조회에 반영한다.
+- summary의 helpfulCount는 내 리뷰가 받은 IsHelpful=TRUE만 집계한다. 리뷰별 helpfulCount와 notHelpfulCount는 TRUE와 FALSE를 각각 세고, myReaction은 현재 사용자의 true/false 또는 미참여 null로 반환하도록 제안한다. 등록·변경·취소 후 조회에 반영한다.
 
 ### 주문내역·리뷰 작성
 
@@ -71,16 +69,16 @@ sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택
 | `PUT /api/reviews/{reviewId}` | {"rating":4,"content":"수정 내용"} | 리뷰 별점·내용 수정 | Reviews |
 | `DELETE /api/reviews/{reviewId}` | 경로의 reviewId | 리뷰 삭제 | Reviews, ReviewHelpful |
 
-리뷰는 완료 주문에만 작성하고 주문당 최대 1개, 별점은 1~5로 제한하는 안이다. 리뷰 삭제 시 연결된 ReviewHelpful도 함께 처리한다. 재주문·실제 주문 생성·결제·쿠폰은 이번 API 목록에서 제외한다.
+리뷰 작성 규칙안: 완료 주문당 최대 1개, 별점 1~5. 리뷰 삭제 시 연결된 ReviewHelpful도 함께 처리한다. 재주문·실제 주문 생성·결제·쿠폰은 이번 API 목록에서 제외한다.
 
-### 구현할 때 맞출 사항
+### 공통 처리
 
-- 위 주소는 자체 제작할 로컬 API 예시다. 쿠팡이츠가 제공하는 외부 API 주소가 아니다.
+- 이 프로젝트에서 구현할 로컬 API 경로다.
 - `{userId}`, `{storeId}`, `{orderId}` 등의 경로 변수는 샘플 ID로 바꾼다. Postman 주소 앞에는 `{{baseUrl}}`을 붙인다.
 - 로컬 시연은 샘플 사용자 1명으로 시작한다. 여러 사용자를 사용하면 주소·주문·리뷰 수정 시 소유자를 확인하는 방식을 정한다.
 - 목록 조회 결과가 없으면 빈 배열을 반환한다. 없는 ID는 404, 잘못된 입력은 400, 중복 즐겨찾기·중복 리뷰는 409로 처리하는 안이다. 반응 등록·변경은 (UserID, ReviewID)당 한 행을 유지한다.
-- API의 응답 필드는 세 View 담당자가 합의한다. 현재 11개 테이블을 기준으로 작성한 명세이며 API 구현·테스트는 아직 진행하지 않았다.
-- 현재 Postman Collection에는 기존 요청 예시 8개만 들어 있다. 구현할 항목을 고른 뒤 요청 모음에 추가한다.
+- 응답 필드는 세 화면 담당이 정한다. 사용 테이블은 DB 컬럼 사전을 따른다.
+- Postman Collection에는 요청 예시 8개가 있다. 구현한 API에 맞춰 요청과 검증 항목을 추가한다.
 
 ## Postman
 

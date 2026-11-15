@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "DB8 쿠팡이츠 — API 설계 초안",
-    "description": "DB8-Local.postman_environment.json을 함께 Import하고 DB8 Local 환경을 선택하세요. 환경의 baseUrl을 각자 API 서버 주소·포트로 설정하면 8개 요청에 공통 적용됩니다. http://localhost:3000은 예시이며 팀 공통 포트가 아닙니다. 실행 가능한 서버는 아직 구현되지 않았습니다. ID는 Collection 변수에서 샘플 DB에 맞춰 변경하세요.",
+    "name": "DB8 쿠팡이츠 API",
+    "description": "DB8 Local 환경을 선택하고 baseUrl을 자기 API 서버 주소로 설정한다. userId·storeId·orderId는 Collection 변수에서 샘플 DB에 맞춘다. 서버 구현 후 사용할 요청 예시이며, 자세한 설정은 postman/README.md를 참고한다.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [

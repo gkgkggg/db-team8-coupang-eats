@@ -2,7 +2,7 @@
 
 ## DB 스키마
 
-2026-11-15, 별도 MySQL Community Server 8.4.13에서 schema.sql을 실행했다. 기존 개인 DB에는 연결하지 않았다. [상세 결과](schema-validation.json)
+2026-11-15, 별도 MySQL Community Server 8.4.13에서 schema.sql을 별도 검증 DB에서 실행했다. [상세 결과](schema-validation.json)
 
 | 항목 | 결과 |
 | --- | --- |
@@ -23,7 +23,7 @@
 
 아직 실행 결과가 없다.
 
-| 담당자 | View | 요청·입력값 | MySQL 결과 | 상태 코드·JSON | 증빙 경로 | 확인일 |
+| 담당자 | View | 요청·입력값 | MySQL 결과 | 상태 코드·JSON | 캡처 경로 | 확인일 |
 | --- | --- | --- | --- | --- | --- | --- |
 
-정상·예외 동작을 실행한 뒤 결과와 evidence/의 캡처 경로를 기록합니다.
+각 화면 담당이 정상·예외 요청을 실행한 뒤 결과와 evidence/의 캡처 경로를 기록한다.

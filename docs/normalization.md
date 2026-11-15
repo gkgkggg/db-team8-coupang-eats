@@ -1,15 +1,15 @@
 # 주문–메뉴 예시의 1NF → 2NF → 3NF
 
-## 1. 설명의 범위와 업무 규칙
+## 1. 대상과 업무 규칙
 
-세 View 전체를 하나의 초대형 조인으로 합치지 않는다. 즐겨찾기·리뷰·주문을 한 번에 합치면 독립적인 1:N 행이 서로 곱해질 수 있다. 정규화 과정은 핵심인 **주문–메뉴 원본**으로 설명하고, 다른 기능은 독립 관계로 추가한다.
+주문–메뉴 테이블을 1NF부터 3NF까지 분해한다. 즐겨찾기·리뷰는 별도 관계로 추가한다. 서로 독립적인 1:N 목록을 한 번에 조인하면 행이 곱해지므로 구분해서 다룬다.
 
 - 한 주문은 한 사용자·한 가게에 속한다.
 - MenuID는 메뉴를 전역 식별하고 한 가게에만 속한다. 주문은 그 가게의 메뉴만 담는다.
 - 옵션은 제외하며 한 주문의 같은 메뉴는 수량을 합친다. 키는 (OrderID, MenuID)다.
 - UserName·UserPhone·StoreName·StorePhone·MenuName·CurrentPrice는 이 예시의 현재 마스터 정보다. 이름·전화번호·날짜는 키가 아니다.
 - MenuNameAtOrder·UnitPriceAtOrder·DeliveryAddressText·Orders.DeliveryFee는 주문 당시 사실이다. 현재 값이 바뀌어도 유지한다.
-- 함수 종속(Functional Dependency)은 아래 업무 규칙으로 정의한다. 8개 행에서 우연히 값이 같다는 이유로 단정하지 않는다.
+- 함수 종속(Functional Dependency)은 데이터의 우연한 반복이 아닌 아래 업무 규칙으로 정의한다.
 
 ## 2. 정규화 전(UNF): 반복 그룹
 
@@ -22,7 +22,7 @@
 | 103 | 1 | 2 | (21, 치즈버거, 7000, 1); (22, 감자튀김, 2500, 2) |
 | 104 | 1 | 1 | (11, 후라이드치킨, 18000, 1); (12, 콜라, 2000, 1) |
 
-여기서는 목록 속 각 메뉴를 독립적으로 조회·제약해야 하므로, 관계형 학습 모델의 원자값(Atomic Value) 기준으로 목록을 메뉴별 행으로 펼친다. MySQL이 JSON 타입을 지원하는지와는 별도의 모델링 선택이다.
+메뉴별 조회와 제약조건 적용을 위해 목록을 메뉴별 행으로 펼친다. 각 셀에는 원자값(Atomic Value) 하나를 저장한다.
 
 ## 3. 제1정규형(First Normal Form, 1NF): 한 행에 주문 메뉴 하나
 
@@ -32,7 +32,7 @@
 OrderID, OrderedAt, UserID, UserName, UserPhone, StoreID, StoreName, StorePhone, OrderStatus, DeliveryAddressText, DeliveryFee, DiscountAmount, MenuID, MenuName, CurrentPrice, MenuNameAtOrder, UnitPriceAtOrder, Quantity
 ```
 
-[전체 18개 컬럼·8행 CSV](examples/order_1nf.csv)의 일부 컬럼을 아래에 표시했다. CSV는 정규화 설명용 가상 데이터이며 db/data.sql에 적재한 데이터가 아니다.
+[전체 18개 컬럼·8행 CSV](examples/order_1nf.csv)의 일부 컬럼을 아래에 표시했다. CSV는 정규화 설명용 가상 데이터다. DB에 적재할 샘플은 db/data.sql에 따로 작성한다.
 
 | OrderID | UserID | StoreID | MenuID | MenuNameAtOrder | UnitPriceAtOrder | Quantity |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -128,7 +128,7 @@ OrderItems(
 - StoreID → Stores.DeliveryFee는 현재 기본 요금이고, StoreID → Orders.DeliveryFee는 가정하지 않는다.
 - 주소·가격 스냅샷은 현재 마스터 값을 중복 캐시한 것이 아니라 시점이 다른 사실이다. 이 업무 규칙에서는 3NF를 위반하지 않는다.
 
-## 6. 나머지 기능 관계를 추가해 최종 11개 테이블로 확장
+## 6. 다른 기능의 테이블
 
 위 원본에서 직접 분해한 것은 Users·Stores·Menus·Orders·OrderItems의 5개 관계다. 여기에 기능 요구사항으로 Addresses·Categories·StoreCategories·Favorites·Reviews·ReviewHelpful의 6개 관계를 추가한다.
 
@@ -136,11 +136,11 @@ OrderItems(
 - Stores M:N Categories는 StoreCategories(StoreID, CategoryID)로 분해한다. 비키 속성은 없다.
 - Users M:N Reviews의 도움·비도움 반응은 ReviewHelpful(UserID, ReviewID)로 분해한다. IsHelpful과 CreatedAt은 이 복합키 전체에 종속되며, IsHelpful은 TRUE=도움이 돼요, FALSE=도움이 안 돼요다.
 - Reviews.OrderID는 UNIQUE NOT NULL로 주문당 리뷰 0~1개를 나타낸다.
-- 컬럼 사전의 CreatedAt·이미지·주소·판매 상태 등은 별도 기능 속성으로 추가한다. 모두 주문 원본에서 분해되어 나왔다고 주장하지 않는다.
+- 컬럼 사전의 CreatedAt·이미지·주소·판매 상태 등은 해당 기능에 필요한 속성으로 추가한다.
 
 전체 타입·키·NULL·계산값·업무 제약은 [db-column-dictionary.md](db-column-dictionary.md)를 참고한다.
 
-## 7. 무손실 조인(Lossless Join)과 확인 범위
+## 7. 무손실 조인(Lossless Join)
 
 OrderItems가 실제 (OrderID, MenuID) 쌍을 유지한다. OrderID로 주문 헤더를, MenuID로 메뉴를, UserID·StoreID로 유일한 마스터를 결합하므로 해당 업무 규칙을 만족하는 원본 행을 복원할 수 있다. 핵심 함수 종속은 각 마스터·주문·주문 항목에 보존되고, 이행된 정보는 키 조인으로 유도한다.
 
@@ -158,4 +158,4 @@ JOIN Menus AS m ON m.MenuID = oi.MenuID
 ORDER BY o.OrderID, oi.MenuID;
 ```
 
-설명용 8행은 Python의 관계 투영·조인으로 원본 18개 컬럼을 재조합해 확인한다. 이것은 MySQL에서 DDL·위 SELECT를 실행한 결과가 아니다. 실제 구현 후 db/schema.sql·data.sql과 해당 DBMS에서 다시 확인한다.
+설명용 8행은 Python에서 투영·조인해 원본 18개 컬럼과 비교한다. MySQL에서 위 복원 질의를 실행한 결과는 샘플 데이터 적재 후 기록한다.

@@ -1,50 +1,58 @@
 # 데이터베이스 8조 텀프로젝트
 
-쿠팡이츠의 **홈 / 마이이츠(즐겨찾기 포함) / 주문내역** 3개 View를 위한 MySQL·SQL·API 공동 저장소입니다.
+쿠팡이츠의 홈, 마이이츠(즐겨찾기 포함), 주문내역 화면을 구현한다. MySQL 스키마와 화면별 SQL, API 코드를 이 저장소에서 공유한다.
 
-> DB 스키마를 작성하고 MySQL에서 생성·제약조건을 검증했습니다. 샘플 데이터·화면별 SQL·API 서버는 아직 작성 전입니다. [DB 실행 방법](db/README.md)
+DB 스키마는 MySQL에서 생성과 제약조건을 확인했다. 샘플 데이터, 화면별 SQL, API 서버와 뷰는 작성 전이다.
 
 ## 공용 자료
+
 - [Notion 프로젝트 홈](https://app.notion.com/p/40d3cd86f142803b9b56fd49db5599be)
 - [역할 분담·보고서·발표](https://app.notion.com/p/4113cd86f14281b6bc6ec94d58bd1abd)
 - [DB·API 구현 자료](https://app.notion.com/p/4113cd86f14281989808ee6b7daea80b)
-- [Google Docs 작업 계획](https://docs.google.com/document/d/18E7jaJEv43JHhhHHRuGolu_DX54voueo2YwH5gBFQUI)
+- [공동 보고서](https://docs.google.com/document/d/1quy0ELbfUMO4LLlYho2nik5hC8uHYOEepcmDoTlnlcs/edit)
+- [작업 계획](https://docs.google.com/document/d/18E7jaJEv43JHhhHHRuGolu_DX54voueo2YwH5gBFQUI)
 - [회의 시간 입력](https://www.when2meet.com/?39622816-pPWgN)
-- [DB 컬럼 사전 — 11개 테이블·58개 컬럼](docs/db-column-dictionary.md)
-- [전체 ERD·View별 확대 그림 — PNG·SVG](docs/erd/README.md)
-- [1NF → 2NF → 3NF 정규화 과정](docs/normalization.md)
+- [DB 컬럼 사전](docs/db-column-dictionary.md)
+- [ERD](docs/erd/README.md)
+- [정규화 과정](docs/normalization.md)
 
 ## 역할
-| 담당자 | 담당 |
+
+| 담당 | 맡은 작업 |
 | --- | --- |
-| PPT·발표 담당 | 앱·화면 분석, PPT 전체 제작, 발표 |
-| DB 담당 | MySQL·ERD·DB 설계·샘플 데이터 |
-| 홈 담당 | 홈 SQL·API |
-| 마이이츠 담당 | 마이이츠·즐겨찾기 SQL·API |
-| 주문내역 담당 | 주문내역 SQL·API |
+| PPT·발표 담당 | 앱·화면 분석, PPT 제작, 발표 |
+| DB 담당 | MySQL·ERD·테이블 설계·샘플 데이터 |
+| 홈 담당 | 홈 뷰·SQL·API |
+| 마이이츠 담당 | 마이이츠·즐겨찾기 뷰·SQL·API |
+| 주문내역 담당 | 주문내역 뷰·SQL·API |
 
 ## 폴더
-- `db/`: 스키마, 샘플 데이터, View별 SQL
-- `backend/`: 공통 API 서버 코드 (언어·프레임워크 결정 후 추가)
-- `postman/`: 팀 공용 Collection과 로컬 테스트 환경 예시
-- `docs/`: API 명세, ERD, 실행·검증 기록
-- `evidence/`: SQL·Postman 결과 캡처
 
-## 개발 순서
-1. API 서버 언어·프레임워크와 응답 규칙을 결정합니다.
-2. DB 담당자가 `db/schema.sql`, `db/data.sql`, ERD를 작성하고 팀원과 검토합니다.
-3. 각 View 담당자가 `db/queries/`와 같은 `backend/` 프로젝트에서 SQL·API를 구현합니다.
-4. Postman으로 정상·예외 요청과 MySQL·JSON 결과의 일치를 확인합니다.
-5. 담당 보고서용 설명·실행 결과를 PPT·발표 담당자에게 전달합니다.
-6. 보고서 작성 방식은 팀원 1명이 대표로 제출하는 방식입니다.
+- `db/`: 스키마, 샘플 데이터, 화면별 SQL
+- `backend/`: 공통 API 서버 코드
+- `postman/`: 요청 모음과 로컬 환경 파일
+- `docs/`: API 명세, ERD, 정규화, 검증 기록
+- `evidence/`: SQL·Postman·화면 캡처
 
-## 팀원 편집
+## 작업 순서
 
-브랜치 예시: `db/schema`, `feature/home`, `feature/my-page`, `feature/orders`, `docs/presentation`.
+1. 서버·뷰의 언어와 프레임워크, API 응답 형식을 정한다.
+2. DB 담당이 스키마와 ERD를 팀원과 검토하고 샘플 데이터를 작성한다.
+3. 각 화면 담당이 `db/queries/`의 SQL과 공통 `backend/`의 API, 해당 뷰를 구현한다.
+4. MySQL 조회 결과, API의 JSON 응답, 화면 표시를 비교하고 정상·예외 요청을 확인한다.
+5. 각자 공동 보고서에 맡은 부분을 작성하고 설명과 실행 캡처를 PPT·발표 담당에게 전달한다.
+6. 대표 팀원 1명이 보고서를 취합·검수해 제출한다. 대표 제출자는 팀에서 정한다.
 
-## 실행 안내
-아직 실행 가능한 API 서버가 없습니다. `backend/README.md`에 서버 실행법, `db/README.md`에 MySQL 실행 순서를 구현과 함께 작성합니다. Postman 요청 주소는 설계 예시입니다.
+보고서는 테이블·정규화·SQL·API를 그렇게 구성한 이유와 실제 실행 결과를 설명한다. PPT는 발표 시간에 맞춰 핵심을 정리한다.
 
-Postman에서는 [Collection](postman/DB8.postman_collection.json)과 [DB8 Local 환경](postman/DB8-Local.postman_environment.json)을 Import하고, 활성 환경의 `baseUrl`만 각자 API 서버 주소·포트로 설정합니다. 기본 `http://localhost:3000`은 예시입니다. [설정 방법](postman/README.md)을 참고하세요.
+## 코드 공유
 
-실제 DB 비밀번호·토큰은 commit하지 않고, `.env.example`을 복사한 로컬 `.env`에만 입력합니다. 샘플 데이터와 캡처는 가상 데이터를 사용합니다.
+작업별로 브랜치를 나눠 수정한다. 브랜치 이름 예: `db/schema`, `feature/home`, `feature/my-page`, `feature/orders`, `docs/presentation`.
+
+## 로컬 실행
+
+DB 생성은 [MySQL 실행 안내](db/README.md)를 따른다. 서버 구현 후 설치·실행 명령과 MySQL 연결 방법을 [backend/README.md](backend/README.md)에 작성한다.
+
+Postman에서 [Collection](postman/DB8.postman_collection.json)과 [DB8 Local 환경](postman/DB8-Local.postman_environment.json)을 가져오고, 활성 환경의 `baseUrl`을 자기 API 서버 주소로 설정한다. `http://localhost:3000`은 예시다. [설정 방법](postman/README.md)
+
+DB 접속 정보는 `.env.example`을 복사한 로컬 `.env`에 입력한다. 실제 비밀번호와 토큰은 커밋하지 않는다. 샘플 데이터와 캡처에는 가상 데이터를 사용한다.
