@@ -1,3 +1,5 @@
 -- 담당: DB 담당
 -- TODO: MySQL 테이블, PK/FK, UNIQUE와 생성 순서를 작성합니다.
+-- ReviewHelpful: PK(UserID, ReviewID), IsHelpful BOOLEAN NOT NULL, CHECK(IsHelpful IN (0,1)).
+-- TRUE=도움이 돼요, FALSE=도움이 안 돼요. 취소는 행 삭제, 받은 도움 수는 TRUE만 집계합니다.
 -- 아직 실행 가능한 DB 스키마가 아닙니다.

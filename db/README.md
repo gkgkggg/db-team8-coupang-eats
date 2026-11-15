@@ -13,3 +13,4 @@ MySQL 버전, DB 생성 명령, 실행 방법은 확정 후 이 파일에 기록
 
 Users–Stores의 M:N은 Favorites로, Orders–Menus의 M:N은 OrderItems로 연결합니다.
 Favorites의 사용자·가게 중복과 리뷰 도움 반응의 사용자·리뷰 중복을 제한합니다.
+ReviewHelpful에는 IsHelpful BOOLEAN NOT NULL을 두고 TRUE=도움이 돼요, FALSE=도움이 안 돼요로 구분합니다. 0·1만 허용하며, 반응 취소는 행 삭제로 처리합니다. 마이이츠의 받은 도움 수는 TRUE인 행만 셉니다.

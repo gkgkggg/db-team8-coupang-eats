@@ -50,13 +50,15 @@ sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택
 | `DELETE /api/users/{userId}/addresses/{addressId}` | 경로의 userId, addressId | 주소 삭제 | Addresses |
 | `PUT /api/users/{userId}/default-address` | {"addressId":10} | 기본 주소 변경 | Addresses |
 | `GET /api/users/{userId}/reviews` | 경로의 userId | 내 리뷰 목록·가게·별점·내용·받은 도움 수 | Reviews, Orders, Stores, ReviewHelpful |
-| `PUT /api/users/{userId}/helpful-reviews/{reviewId}` | 경로의 userId, reviewId | 리뷰 도움 반응 등록; 이미 있으면 유지 | ReviewHelpful |
-| `DELETE /api/users/{userId}/helpful-reviews/{reviewId}` | 경로의 userId, reviewId | 리뷰 도움 반응 해제 | ReviewHelpful |
+| `PUT /api/users/{userId}/helpful-reviews/{reviewId}` | 경로의 userId, reviewId와 JSON의 isHelpful(true/false) | 도움·비도움 반응 등록 또는 변경 | ReviewHelpful |
+| `DELETE /api/users/{userId}/helpful-reviews/{reviewId}` | 경로의 userId, reviewId | 도움·비도움 반응 취소 | ReviewHelpful |
 
 - 주소 등록·수정 입력: addressLabel, postalCode, addressLine1, addressLine2. 기본 주소는 별도 변경 API로 지정한다.
 - 기본 주소 변경은 사용자 소유 주소인지 확인하고 기존 기본값 해제와 새 주소 지정을 한 트랜잭션(Transaction)에서 처리한다. 기본 주소 삭제 후에는 기본 주소가 없을 수 있으며, 다음 조회에서 다시 선택하도록 한다.
 - 주소를 수정·삭제해도 Orders.DeliveryAddressText에 저장된 과거 배송 주소는 바꾸지 않는다.
-- 내 리뷰가 받은 도움 수와 내가 누른 도움 반응은 구분한다. 도움 등록·해제 후 summary를 다시 조회하면 바뀐 집계를 확인할 수 있다.
+- 반응 입력은 `{"isHelpful":true}` 또는 `{"isHelpful":false}`다. isHelpful은 필수 Boolean이며 누락·null·문자열은 400으로 처리한다. 같은 사용자·리뷰의 반응이 있으면 IsHelpful만 바꾸고 CreatedAt은 유지한다. 같은 값을 재요청하면 그대로 유지한다.
+- 반응 취소는 DELETE로 행을 삭제한다. 행이 없는 상태는 미참여이며 FALSE는 '도움이 안 돼요'다.
+- summary의 helpfulCount는 내 리뷰가 받은 IsHelpful=TRUE만 집계한다. 리뷰별 helpfulCount와 notHelpfulCount는 TRUE와 FALSE를 각각 세고, myReaction은 현재 사용자의 true/false 또는 미참여 null로 반환하는 안이다. 등록·변경·취소 후 조회에 반영한다.
 
 ### 주문내역·리뷰 작성 — 추가 후보 4종
 
@@ -76,7 +78,7 @@ sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택
 - 위 주소는 자체 제작할 로컬 API 예시다. 쿠팡이츠가 제공하는 외부 API 주소가 아니다.
 - `{userId}`, `{storeId}`, `{orderId}` 등의 경로 변수는 샘플 ID로 바꾼다. Postman 주소 앞에는 `{{baseUrl}}`을 붙인다.
 - 로컬 시연은 샘플 사용자 1명으로 시작한다. 여러 사용자를 사용하면 주소·주문·리뷰 수정 시 소유자를 확인하는 방식을 정한다.
-- 목록 조회 결과가 없으면 빈 배열을 반환한다. 없는 ID는 404, 잘못된 입력은 400, 중복 즐겨찾기·중복 리뷰는 409로 처리하는 안이다. 도움 반응 등록은 같은 요청을 반복해도 중복 행을 만들지 않는다.
+- 목록 조회 결과가 없으면 빈 배열을 반환한다. 없는 ID는 404, 잘못된 입력은 400, 중복 즐겨찾기·중복 리뷰는 409로 처리하는 안이다. 반응 등록·변경은 (UserID, ReviewID)당 한 행을 유지한다.
 - 기본 API의 응답 필드는 세 View 담당자가 합의한다. 추가 후보는 현재 11개 테이블을 기준으로 정리했으며 아직 구현·테스트한 API가 아니다.
 - 현재 Postman Collection에는 기존 요청 예시 8개만 들어 있다. 추가 후보는 구현할 항목을 고른 뒤 요청 모음에 넣는다.
 
@@ -89,5 +91,5 @@ sort는 이름순(name), 배달비순(deliveryFee), 별점순(rating) 중 선택
 - 홈: 전체·검색·카테고리·검색 결과 없음.
 - 마이이츠: 집계 정확성, 즐겨찾기 0건·추가·해제·중복.
 - 주문내역: 상태·금액·리뷰 여부·주문 여러 건·0건.
-- 선택 구현: 주소 소유자·기본 주소 전환, 리뷰 중복·별점 범위, 도움 반응 중복.
+- 선택 구현: 주소 소유자·기본 주소 전환, 리뷰 중복·별점 범위, 도움/비도움 등록·전환·취소·집계·중복.
 - MySQL 조회·변경 결과와 JSON을 비교한다.

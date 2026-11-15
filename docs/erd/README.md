@@ -1,6 +1,6 @@
 # ERD
 
-홈·마이이츠·주문내역의 ERD. 11개 테이블, 57개 컬럼, 13개 외래키 관계로 구성한다.
+홈·마이이츠·주문내역의 ERD. 11개 테이블, 58개 컬럼, 13개 외래키 관계로 구성한다.
 
 [컬럼 사전](../db-column-dictionary.md) · [1NF → 2NF → 3NF 과정](../normalization.md)
 
@@ -10,7 +10,7 @@
 
 [PNG 원본](db8-erd-full.png) · [SVG 원본](db8-erd-full.svg)
 
-![전체 ERD — 11개 테이블·57개 컬럼](db8-erd-full.png)
+![전체 ERD — 11개 테이블·58개 컬럼](db8-erd-full.png)
 
 ## View별 확대 그림
 
@@ -45,6 +45,8 @@
 - ID 자동 생성 방식은 DDL 작성 시 정한다.
 
 다대다(M:N) 관계는 `Favorites`, `StoreCategories`, `OrderItems`, `ReviewHelpful` 연결 테이블로 나눴다.
+
+`ReviewHelpful.IsHelpful`은 TRUE=도움이 돼요, FALSE=도움이 안 돼요다. 같은 사용자·리뷰의 반응은 한 행으로 저장하고 반응 취소 시 삭제한다.
 
 ## 다시 생성하기
 

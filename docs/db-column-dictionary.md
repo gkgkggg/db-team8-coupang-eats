@@ -4,11 +4,11 @@
 
 ## 설계 범위·업무 규칙
 
-- 대상 View는 홈 / 마이이츠(즐겨찾기 포함) / 주문내역 3개다. 아래 11개 테이블·57개 컬럼은 팀 검토용 설계안이다. 실제 서비스 내부 DB를 복제했다는 뜻은 아니다.
+- 대상 View는 홈 / 마이이츠(즐겨찾기 포함) / 주문내역 3개다. 아래 11개 테이블·58개 컬럼은 팀 검토용 설계안이다. 실제 서비스 내부 DB를 복제했다는 뜻은 아니다.
 - 이름·전화번호·날짜·메뉴명·상호는 고유하다고 가정하지 않는다. 식별은 ID로 한다. Categories.CategoryName만 이 초안에서 별도 UNIQUE를 제안한다.
 - 한 주문은 한 사용자·한 가게에 속한다. 한 메뉴는 한 가게에 속하며 MenuID를 다른 가게에 재배정하지 않는다.
 - 메뉴 옵션·추가 구성은 제외한다. 한 주문에서 같은 MenuID는 한 항목으로 합산한다. 따라서 OrderItems의 복합 기본키는 (OrderID, MenuID)다. 서로 다른 옵션·단가의 같은 메뉴를 한 주문에 넣어야 하면 OrderLineNo와 옵션 테이블로 재설계한다.
-- 한 주문의 리뷰는 최대 1개다. 즐겨찾기와 리뷰 도움 반응은 사용자·대상 쌍별로 최대 1개다.
+- 한 주문의 리뷰는 최대 1개다. 즐겨찾기와 리뷰 도움 반응은 사용자·대상 쌍별로 최대 1개다. ReviewHelpful.IsHelpful은 TRUE=도움이 돼요, FALSE=도움이 안 돼요이며 반응 취소는 행 삭제로 처리한다.
 - 현재 사용자·가게·메뉴 정보와 주문 당시의 메뉴명·단가·배송 주소·적용 배달비를 구분한다. 현재 값이 바뀌어도 주문 시점 값은 유지한다.
 - 주문내역의 상호는 현재 Stores.StoreName을 표시한다. 과거 상호 보존이 필요하면 별도 StoreNameAtOrder를 검토한다.
 - 금액은 원(KRW) 단위의 DECIMAL(10,0)으로 제안한다. 실제 결제 승인·취소·환불 처리와 쿠폰·광고·스탬프·로그인 구현은 이번 기본 설계 범위에서 제외한다.
@@ -28,7 +28,7 @@
 | `Orders` | 주문 기본 정보 | OrderID | 8 |
 | `OrderItems` | 주문 항목 | OrderID + MenuID | 5 |
 | `Reviews` | 주문 리뷰 | ReviewID | 5 |
-| `ReviewHelpful` | 리뷰 도움 반응 | UserID + ReviewID | 3 |
+| `ReviewHelpful` | 리뷰 도움·비도움 반응 | UserID + ReviewID | 4 |
 
 ## 컬럼 사전
 
@@ -158,22 +158,26 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 | `Content` | `TEXT` | - | Y | 리뷰 내용 |
 | `CreatedAt` | `DATETIME` | - | N | 리뷰 작성 시각 |
 
-### ReviewHelpful — 리뷰 도움 반응
+### ReviewHelpful — 리뷰 도움·비도움 반응
 
-사용 View: 마이이츠의 내 리뷰가 받은 도움 수. PK: (UserID, ReviewID).
+사용 View: 리뷰의 도움·비도움 반응 / 마이이츠의 내 리뷰가 받은 도움 수. PK: (UserID, ReviewID). UserID는 반응을 누른 사용자이며 리뷰 작성자는 Orders.UserID로 확인한다.
 
 | 컬럼 | MySQL 자료형 제안 | 키·참조 | NULL 허용 | 설명 |
 | --- | --- | --- | --- | --- |
-| `UserID` | `BIGINT UNSIGNED` | PK(1)·FK → Users.UserID | N | 도움 반응을 누른 사용자 |
-| `ReviewID` | `BIGINT UNSIGNED` | PK(2)·FK → Reviews.ReviewID | N | 도움 반응 대상 리뷰 |
-| `CreatedAt` | `DATETIME` | - | N | 도움 반응 시각 |
+| `UserID` | `BIGINT UNSIGNED` | PK(1)·FK → Users.UserID | N | 반응을 누른 사용자 |
+| `ReviewID` | `BIGINT UNSIGNED` | PK(2)·FK → Reviews.ReviewID | N | 반응 대상 리뷰 |
+| `IsHelpful` | `BOOLEAN` | - | N | TRUE=도움이 돼요, FALSE=도움이 안 돼요; 기본값 없이 명시적으로 입력 |
+| `CreatedAt` | `DATETIME` | - | N | 최초 반응 시각; 반응 종류 변경 시 유지 |
+
+반응 변경은 같은 (UserID, ReviewID) 행의 IsHelpful을 수정한다. 취소는 행을 삭제하며, 행이 없는 상태가 미참여다. FALSE를 미참여로 처리하지 않는다. API에서 true/false 입력을 검사하고 DDL에는 NOT NULL과 0·1 허용 제약을 반영한다.
 
 ## 저장하지 않고 조회로 계산할 값
 
 | 화면 표시값 | 계산 기준 |
 | --- | --- |
 | 내 리뷰 수 | Reviews를 Orders와 연결하고 Orders.UserID별 COUNT |
-| 내 리뷰가 받은 도움 수 | ReviewHelpful → Reviews → Orders로 연결하여 리뷰 작성자(Orders.UserID)별 COUNT; 내가 누른 반응 수와 구분 |
+| 내 리뷰가 받은 도움 수 | ReviewHelpful에서 IsHelpful=TRUE인 행만 Reviews → Orders로 연결하여 리뷰 작성자(Orders.UserID)별 COUNT; 내가 누른 반응 수와 구분 |
+| 리뷰별 도움·비도움 수 | ReviewID별로 IsHelpful=TRUE와 FALSE를 각각 COUNT; 반응 없는 리뷰는 각각 0 |
 | 즐겨찾기 수 | Favorites의 UserID별 COUNT |
 | 가게 평균 별점·리뷰 수 | Reviews → Orders의 StoreID별 AVG(Rating), COUNT |
 | 주문 메뉴 소계 | SUM(OrderItems.Quantity × OrderItems.UnitPriceAtOrder) |
@@ -187,7 +191,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 | View/API | 주요 테이블·컬럼 |
 | --- | --- |
 | 홈 GET /api/home | Addresses.UserID·IsDefault·AddressLine1·AddressLine2, Categories.*, StoreCategories.*, Stores.* |
-| 마이이츠 GET /api/users/{userId}/summary | Users.UserName·UserPhone, Orders.UserID, Reviews.OrderID, ReviewHelpful.ReviewID, Favorites.UserID |
+| 마이이츠 GET /api/users/{userId}/summary | Users.UserName·UserPhone, Orders.UserID, Reviews.OrderID, ReviewHelpful.ReviewID·IsHelpful=TRUE, Favorites.UserID |
 | 즐겨찾기 GET/POST/DELETE | Favorites(UserID,StoreID), Favorites.CreatedAt, Stores의 가게 정보 |
 | 주문 목록 GET /api/users/{userId}/orders | Orders.UserID·OrderStatus·OrderedAt·DeliveryFee·DiscountAmount, Stores.StoreName·StoreImageURL |
 | 주문 상세 GET /api/orders/{orderId} | OrderItems의 메뉴명 스냅샷·수량·단가, Menus.MenuImageURL, Reviews.OrderID |
@@ -199,6 +203,7 @@ NULL 허용 N=필수, Y=선택. FK는 외래키(Foreign Key), UNIQUE는 유일 �
 - Categories 1:N StoreCategories.
 - Orders 1:N OrderItems, Orders 1:0..1 Reviews, Menus 1:N OrderItems.
 - Reviews 1:N ReviewHelpful.
+- ReviewHelpful의 복합키 (UserID, ReviewID)로 한 사용자·리뷰의 반응을 1개로 제한한다. TRUE와 FALSE를 동시에 별도 행으로 저장하지 않는다.
 - Users M:N Stores → Favorites. Stores M:N Categories → StoreCategories. Orders M:N Menus → OrderItems. Users M:N Reviews(도움 반응) → ReviewHelpful.
 - PK·FK 컬럼의 자료형과 UNSIGNED 여부를 맞춘다. FK는 PK 또는 명시적 UNIQUE NOT NULL 키를 참조하도록 한다.
 - Quantity ≥ 1, Rating 1~5, 금액 ≥ 0, OrderStatus 허용값을 검사한다. 실제 MySQL 버전을 확인한 후 지원되는 CHECK와 API 검증으로 구현한다.

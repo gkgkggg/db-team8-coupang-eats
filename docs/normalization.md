@@ -134,7 +134,7 @@ OrderItems(
 
 - Users M:N Stores는 Favorites(UserID, StoreID)로 분해한다. CreatedAt은 해당 쌍에 종속된다.
 - Stores M:N Categories는 StoreCategories(StoreID, CategoryID)로 분해한다. 비키 속성은 없다.
-- Users M:N Reviews의 도움 반응은 ReviewHelpful(UserID, ReviewID)로 분해한다.
+- Users M:N Reviews의 도움·비도움 반응은 ReviewHelpful(UserID, ReviewID)로 분해한다. IsHelpful과 CreatedAt은 이 복합키 전체에 종속되며, IsHelpful은 TRUE=도움이 돼요, FALSE=도움이 안 돼요다.
 - Reviews.OrderID는 UNIQUE NOT NULL로 주문당 리뷰 0~1개를 나타낸다.
 - 컬럼 사전의 CreatedAt·이미지·주소·판매 상태 등은 별도 기능 속성으로 추가한다. 모두 주문 원본에서 분해되어 나왔다고 주장하지 않는다.
 

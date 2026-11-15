@@ -43,7 +43,7 @@ def read_tables():
                 rows.append(dict(zip(['name', 'type', 'key', 'nullable', 'description'], cells)))
         result[name] = {'name': name, 'korean': korean, 'rows': rows}
     assert len(result) == 11
-    assert sum(len(t['rows']) for t in result.values()) == 57
+    assert sum(len(t['rows']) for t in result.values()) == 58
     return result
 
 TABLES = read_tables()
@@ -59,7 +59,7 @@ KOREAN = {
  'IsAvailable':'판매 가능 여부','OrderID':'주문 ID','OrderedAt':'주문 시각',
  'OrderStatus':'주문 상태','DeliveryAddressText':'주문 당시 주소','DiscountAmount':'할인액',
  'Quantity':'수량','UnitPriceAtOrder':'주문 당시 단가','MenuNameAtOrder':'주문 당시 메뉴명',
- 'ReviewID':'리뷰 ID','Rating':'별점','Content':'리뷰 내용'
+ 'ReviewID':'리뷰 ID','Rating':'별점','Content':'리뷰 내용','IsHelpful':'도움 여부'
 }
 DEFAULTS = {'IsDefault':'FALSE','DisplayOrder':'0','IsOpen':'TRUE','IsAvailable':'TRUE','DiscountAmount':'0'}
 
@@ -283,7 +283,7 @@ def main():
        make_edge(n,'Orders','Reviews','OrderID','L','R',rail(1550),(1550,710)),
        make_edge(n,'Menus','OrderItems','MenuID','L','R',rail(2860))]
     reports.append(render('db8-erd-orders','View 3 · 주문내역 — 주문내역 담당',n,4380,1510,e,1290))
-    print(json.dumps({'figures':reports,'validated_table_count':11,'validated_column_count':57,'validated_fk_count':13},ensure_ascii=False))
+    print(json.dumps({'figures':reports,'validated_table_count':11,'validated_column_count':58,'validated_fk_count':13},ensure_ascii=False))
 
 if __name__=='__main__':
     main()

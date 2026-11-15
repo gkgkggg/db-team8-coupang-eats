@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="5740" height="2220" viewBox="0 0 5740 2220">
 <rect width="100%" height="100%" fill="#252525"/>
 <text x="80" y="68" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="42" font-weight="700" text-anchor="start" dominant-baseline="central">쿠팡이츠 · 세 View 전체 ERD</text>
-<text x="82" y="122" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="central">3NF 설계안  |  11개 테이블 · 57개 컬럼 · 13개 FK 관계  |  컬럼 사전과 동일한 이름·자료형</text>
+<text x="82" y="122" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="central">3NF 설계안  |  11개 테이블 · 58개 컬럼 · 13개 FK 관계  |  컬럼 사전과 동일한 이름·자료형</text>
 <polyline points="1400,341.0 1660,341.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
 <polyline points="3040,341.0 2900,341.0 2900,383.0 2780,383.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
 <polyline points="4160,341.0 4420,341.0" fill="none" stroke="#7ed4dc" stroke-width="4" stroke-linejoin="round"/>
@@ -786,9 +786,9 @@
 <text x="5260" y="1087.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
 <polyline points="5380,1066 5380,1108" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
 <text x="5390" y="1087.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">0</text>
-<rect x="277" y="1507" width="1126" height="222" fill="#101010" stroke="#101010" stroke-width="1"/>
+<rect x="277" y="1507" width="1126" height="264" fill="#101010" stroke="#101010" stroke-width="1"/>
 <rect x="280" y="1510" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
-<text x="294" y="1537.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">리뷰 도움 반응</text>
+<text x="294" y="1537.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">리뷰 도움·비도움 반응</text>
 <text x="1386" y="1537.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="26" font-weight="700" text-anchor="end" dominant-baseline="central">ReviewHelpful</text>
 <rect x="280" y="1564" width="1120" height="36" fill="#333337" stroke="#333337" stroke-width="1"/>
 <text x="290" y="1582.0" fill="#ccccd0" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
@@ -837,17 +837,31 @@
 <rect x="280" y="1684" width="1120" height="42" fill="#2e2e31" stroke="#161618" stroke-width="2"/>
 <text x="290" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
 <polyline points="320,1684 320,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
-<text x="330" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<text x="330" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">도움 여부</text>
 <polyline points="490,1684 490,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
-<text x="500" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<text x="500" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">IsHelpful</text>
 <polyline points="790,1684 790,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
 <text x="800" y="1705.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
 <polyline points="880,1684 880,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
-<text x="890" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<text x="890" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">BOOLEAN</text>
 <polyline points="1110,1684 1110,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
 <text x="1120" y="1705.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
 <polyline points="1240,1684 1240,1726" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
-<text x="1250" y="1705.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
+<text x="1250" y="1705.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<rect x="280" y="1726" width="1120" height="42" fill="#2a2a2d" stroke="#161618" stroke-width="2"/>
+<text x="290" y="1747.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central"></text>
+<polyline points="320,1726 320,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="330" y="1747.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">생성 시각</text>
+<polyline points="490,1726 490,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="500" y="1747.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">CreatedAt</text>
+<polyline points="790,1726 790,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="800" y="1747.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">—</text>
+<polyline points="880,1726 880,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="890" y="1747.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">DATETIME</text>
+<polyline points="1110,1726 1110,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1120" y="1747.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">NOT NULL</text>
+<polyline points="1240,1726 1240,1768" fill="none" stroke="#171719" stroke-width="2" stroke-linejoin="round"/>
+<text x="1250" y="1747.0" fill="#b8b8bc" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="20" font-weight="400" text-anchor="start" dominant-baseline="central">미정</text>
 <rect x="1657" y="1507" width="1126" height="306" fill="#101010" stroke="#101010" stroke-width="1"/>
 <rect x="1660" y="1510" width="1120" height="54" fill="#151515" stroke="#151515" stroke-width="1"/>
 <text x="1674" y="1537.0" fill="#eeeeee" font-family="Malgun Gothic, Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="28" font-weight="700" text-anchor="start" dominant-baseline="central">주문 리뷰</text>
