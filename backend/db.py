@@ -49,3 +49,32 @@ def execute(sql, params=()):
         return n
     finally:
         conn.close()
+
+
+def insert(sql, params=()):
+    """INSERT: 실행 후 커밋하고 새로 생긴 AUTO_INCREMENT ID를 반환"""
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(sql, params)
+            new_id = cur.lastrowid
+        conn.commit()
+        return new_id
+    finally:
+        conn.close()
+
+
+def run_transaction(statements):
+    """여러 SQL을 한 트랜잭션으로 실행. 하나라도 실패하면 전부 롤백.
+    statements: [(sql, params), ...]"""
+    conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            for sql, params in statements:
+                cur.execute(sql, params)
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
