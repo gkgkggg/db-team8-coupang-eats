@@ -29,6 +29,298 @@
         "method": "GET",
         "header": [],
         "url": "{{baseUrl}}/api/home?userId={{userId}}&categoryId=2&keyword=치킨"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "홈 조회 기본 주소 없음",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/home?userId=2"
+      }
+    },
+    {
+      "name": "홈 조회 userId 누락",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 400', () => pm.response.to.have.status(400));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/home"
+      }
+    },
+    {
+      "name": "홈 조회 없는 사용자",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 404', () => pm.response.to.have.status(404));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/home?userId=999"
+      }
+    },
+    {
+      "name": "카테고리 목록",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/categories"
+      }
+    },
+    {
+      "name": "가게 목록 전체",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores"
+      }
+    },
+    {
+      "name": "가게 목록 카테고리·별점순",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores?categoryId=2&sort=rating"
+      }
+    },
+    {
+      "name": "가게 검색",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores?keyword=치킨"
+      }
+    },
+    {
+      "name": "가게 검색 결과 없음",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores?keyword=없는가게"
+      }
+    },
+    {
+      "name": "가게 목록 잘못된 정렬",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 400', () => pm.response.to.have.status(400));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores?sort=price"
+      }
+    },
+    {
+      "name": "가게 목록 없는 카테고리",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 404', () => pm.response.to.have.status(404));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores?categoryId=999"
+      }
+    },
+    {
+      "name": "가게 상세",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores/{{storeId}}"
+      }
+    },
+    {
+      "name": "가게 상세 없는 가게",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 404', () => pm.response.to.have.status(404));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores/999"
+      }
+    },
+    {
+      "name": "가게 메뉴",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 200', () => pm.response.to.have.status(200));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores/{{storeId}}/menus"
+      }
+    },
+    {
+      "name": "가게 메뉴 잘못된 ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('상태 코드 400', () => pm.response.to.have.status(400));",
+              "pm.test('JSON 응답', () => pm.response.to.be.json);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/stores/abc/menus"
       }
     },
     {
