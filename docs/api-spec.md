@@ -77,6 +77,7 @@
 - `{userId}`, `{storeId}`, `{orderId}` 등의 경로 변수는 샘플 ID로 바꾼다. Postman 주소 앞에는 `{{baseUrl}}`을 붙인다.
 - 로컬 시연은 샘플 사용자 1명으로 시작한다. 여러 사용자를 사용하면 주소·주문·리뷰 수정 시 소유자를 확인하는 방식을 정한다.
 - 목록 조회 결과가 없으면 빈 배열을 반환한다. 없는 ID는 404, 잘못된 입력은 400, 중복 즐겨찾기·중복 리뷰는 409로 처리하는 안이다. 반응 등록·변경은 (UserID, ReviewID)당 한 행을 유지한다.
+- 카테고리·가게·메뉴 이미지가 DB에서 `NULL`이면 응답의 `categoryImageUrl`, `storeImageUrl`, `menuImageUrl`에 [공통 기본 이미지 주소](https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/common/no-photo.png)를 넣는다. [이미지 출처](../db/fixtures/common/README.md)
 - 응답 필드는 세 화면 담당이 정한다. 사용 테이블은 DB 컬럼 사전을 따른다.
 - Postman Collection에는 요청 예시 8개가 있다. 구현한 API에 맞춰 요청과 검증 항목을 추가한다.
 
