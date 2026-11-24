@@ -76,7 +76,8 @@ SELECT 9, 'OrderItems', 5, IF(EXISTS (
 UNION ALL
 SELECT 10, 'Reviews', 5, IF(EXISTS (
     SELECT 1 FROM Reviews
-    WHERE ReviewID = 1 AND OrderID = 101 AND Rating = 5 AND Content = '바삭하고 따뜻했어요.'
+    WHERE ReviewID = 1 AND OrderID = 101 AND Rating = 5
+      AND Content COLLATE utf8mb4_bin = '후라이드가 배달인데도 바삭했어요. 매운 치킨은 먹다 보니 매워서 둘이 번갈아 먹으니까 딱 좋았어요 😋'
       AND CreatedAt = '2026-11-10 20:00:00'
 ), 'PASS', 'FAIL')
 UNION ALL
