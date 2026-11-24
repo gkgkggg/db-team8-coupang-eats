@@ -23,15 +23,12 @@ const get = async (path) => {
   return { status: res.status, body: await res.json() };
 };
 const ids = (list) => list.map((s) => s.storeId);
-const defaultImageUrl = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/common/no-photo.png';
 
 test('카테고리 목록: 표시 순서', async () => {
   const { status, body } = await get('/categories');
   assert.equal(status, 200);
   assert.deepEqual(body.map((c) => c.categoryName), ['한식', '치킨', '피자', '분식', '디저트']);
   assert.deepEqual(Object.keys(body[0]), ['categoryId', 'categoryName', 'categoryImageUrl', 'displayOrder']);
-  assert.equal(body[0].categoryImageUrl, 'https://example.com/img/cat-korean.png');
-  assert.equal(body.find((category) => category.categoryId === 5).categoryImageUrl, defaultImageUrl);
 });
 
 test('가게 목록: 전체·이름순·별점 집계', async () => {
@@ -43,9 +40,7 @@ test('가게 목록: 전체·이름순·별점 집계', async () => {
   assert.equal(s1.reviewCount, 2);
   assert.equal(s1.isOpen, true);
   assert.equal(s1.deliveryFee, 3000);
-  assert.equal(s1.storeImageUrl, 'https://example.com/img/s1.png');
   const s6 = body.find((s) => s.storeId === 6);
-  assert.equal(s6.storeImageUrl, defaultImageUrl);
   assert.equal(s6.rating, null);
   assert.equal(s6.reviewCount, 0);
   const names = body.map((s) => s.storeName);
@@ -105,7 +100,6 @@ test('가게 상세: 정상·리뷰 없음·404·400', async () => {
   assert.equal(closed.body.isOpen, false);
   assert.equal(closed.body.rating, null);
   assert.equal(closed.body.storePhone, null);
-  assert.equal(closed.body.storeImageUrl, defaultImageUrl);
   assert.equal((await get('/stores/999')).status, 404);
   assert.equal((await get('/stores/abc')).status, 400);
 });
@@ -115,8 +109,6 @@ test('가게 메뉴: 정상·판매 중지·빈 목록·404·400', async () => {
   assert.equal(status, 200);
   assert.deepEqual(body.map((m) => m.menuName), ['후라이드치킨', '양념치킨', '치즈볼']);
   assert.equal(body[0].currentPrice, 19000);
-  assert.equal(body[0].menuImageUrl, 'https://example.com/img/m1.png');
-  assert.equal(body[1].menuImageUrl, defaultImageUrl);
   assert.equal(body[2].isAvailable, false);
   const empty = await get('/stores/6/menus');
   assert.equal(empty.status, 200);

@@ -3,7 +3,6 @@ const pool = require('../db');
 const { badRequest, notFound, parseId } = require('../errors');
 
 const router = express.Router();
-const DEFAULT_IMAGE_URL = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/common/no-photo.png';
 
 const RATING_SUBQUERY = `
   SELECT o.StoreID, ROUND(AVG(rv.Rating), 1) AS AvgRating, COUNT(*) AS ReviewCount
@@ -19,7 +18,7 @@ const SORTS = {
 const toStoreSummary = (row) => ({
   storeId: row.StoreID,
   storeName: row.StoreName,
-  storeImageUrl: row.StoreImageURL ?? DEFAULT_IMAGE_URL,
+  storeImageUrl: row.StoreImageURL,
   deliveryFee: row.DeliveryFee,
   minimumOrderAmount: row.MinimumOrderAmount,
   estimatedDeliveryMinutes: row.EstimatedDeliveryMinutes,
@@ -73,7 +72,7 @@ async function findCategories() {
   return rows.map((r) => ({
     categoryId: r.CategoryID,
     categoryName: r.CategoryName,
-    categoryImageUrl: r.CategoryImageURL ?? DEFAULT_IMAGE_URL,
+    categoryImageUrl: r.CategoryImageURL,
     displayOrder: r.DisplayOrder,
   }));
 }
@@ -179,7 +178,7 @@ router.get('/stores/:storeId/menus', async (req, res) => {
     menuId: r.MenuID,
     menuName: r.MenuName,
     currentPrice: r.CurrentPrice,
-    menuImageUrl: r.MenuImageURL ?? DEFAULT_IMAGE_URL,
+    menuImageUrl: r.MenuImageURL,
     isAvailable: r.IsAvailable === 1,
   })));
 });
