@@ -4,6 +4,7 @@ SET NAMES utf8mb4;
 
 -- 음식 사진은 저장소의 예시 썸네일을 사용한다. 출처는 fixtures/food/README.md에 있다.
 SET @food_base = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/';
+SET @category_base = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/categories/';
 SET @img_chicken = CONCAT(@food_base, 'fried-chicken.jpg'),
     @img_spicy = CONCAT(@food_base, 'spicy-chicken.jpg'),
     @img_bibimbap = CONCAT(@food_base, 'bibimbap.jpg'),
@@ -57,18 +58,18 @@ INSERT INTO `Addresses` (`AddressID`, `UserID`, `AddressLabel`, `PostalCode`, `A
     (14, 14, '학교', '13114', '성남시 수정구 복정로 156', '학생회관', TRUE, '2025-03-08 11:40:00');
 
 INSERT INTO `Categories` (`CategoryID`, `CategoryName`, `CategoryImageURL`, `DisplayOrder`) VALUES
-    (1, '한식', @img_bibimbap, 20),
-    (2, '치킨', @img_chicken, 10),
-    (3, '분식', NULL, 30),
-    (4, '피자', @img_pizza, 40),
-    (5, '일식', @img_sushi, 50),
-    (6, '버거', @img_burger, 60),
-    (7, '카페', @img_coffee, 70),
+    (1, '한식', CONCAT(@category_base, 'bibimbap.png'), 20),
+    (2, '치킨', CONCAT(@category_base, 'fried-chicken.png'), 10),
+    (3, '분식', CONCAT(@category_base, 'tteokbokki.png'), 30),
+    (4, '피자', CONCAT(@category_base, 'pizza.png'), 40),
+    (5, '일식', CONCAT(@category_base, 'sushi.png'), 50),
+    (6, '버거', CONCAT(@category_base, 'burger.png'), 60),
+    (7, '카페', CONCAT(@category_base, 'coffee.png'), 70),
     (8, '야식', NULL, 80),
-    (9, '돈까스', NULL, 90),
-    (10, '중식', NULL, 100),
-    (11, '족발·보쌈', NULL, 110),
-    (12, '샐러드', NULL, 120),
+    (9, '돈까스', CONCAT(@category_base, 'pork-cutlet.png'), 90),
+    (10, '중식', CONCAT(@category_base, 'jjamppong.png'), 100),
+    (11, '족발·보쌈', CONCAT(@category_base, 'jokbal.png'), 110),
+    (12, '샐러드', CONCAT(@category_base, 'chicken-salad.png'), 120),
     (13, '디저트', NULL, 130),
     (14, '국밥', NULL, 140);
 
@@ -236,7 +237,7 @@ INSERT INTO `ReviewHelpful` (`UserID`, `ReviewID`, `IsHelpful`, `CreatedAt`) VAL
     (13, 15, TRUE, '2026-05-09 12:46:00');
 
 COMMIT;
-SET @food_base = NULL, @img_chicken = NULL, @img_spicy = NULL, @img_bibimbap = NULL,
+SET @food_base = NULL, @category_base = NULL, @img_chicken = NULL, @img_spicy = NULL, @img_bibimbap = NULL,
     @img_tteokbokki = NULL, @img_pizza = NULL, @img_sushi = NULL, @img_burger = NULL, @img_coffee = NULL,
     @img_margherita = NULL, @img_classic_burger = NULL, @img_iced_americano = NULL, @img_butter_cookies = NULL,
     @img_pork_cutlet = NULL, @img_jjamppong = NULL, @img_jokbal = NULL, @img_chicken_salad = NULL;
