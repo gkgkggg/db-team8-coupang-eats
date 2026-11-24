@@ -19,15 +19,15 @@ WITH StoreReviews AS (
 SELECT 1 AS CheckNo, 'Users' AS CheckName, 4 AS ColumnsChecked,
     IF(EXISTS (
         SELECT 1 FROM Users
-        WHERE UserID = 1 AND UserName = '테스트 사용자 A' AND UserPhone = '010-0000-0001'
-          AND CreatedAt = '2026-11-01 09:00:00'
+        WHERE UserID = 1 AND UserName = '김도윤' AND UserPhone = '010-0000-0001'
+          AND CreatedAt = '2022-09-17 09:00:00'
     ), 'PASS', 'FAIL') AS Result
 UNION ALL
 SELECT 2, 'Addresses', 8, IF(EXISTS (
     SELECT 1 FROM Addresses
-    WHERE AddressID = 1 AND UserID = 1 AND AddressLabel = '집' AND PostalCode = '01234'
-      AND AddressLine1 = '테스트시 연습로 1' AND AddressLine2 = '101호'
-      AND IsDefault = TRUE AND CreatedAt = '2026-11-01 09:05:00'
+    WHERE AddressID = 1 AND UserID = 1 AND AddressLabel = '집' AND PostalCode = '13101'
+      AND AddressLine1 = '성남시 수정구 성남대로 1214' AND AddressLine2 = '101호'
+      AND IsDefault = TRUE AND CreatedAt = '2022-09-17 09:05:00'
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 3, 'Categories', 4, IF(EXISTS (
@@ -39,8 +39,8 @@ SELECT 3, 'Categories', 4, IF(EXISTS (
 UNION ALL
 SELECT 4, 'Stores', 9, IF(EXISTS (
     SELECT 1 FROM Stores
-    WHERE StoreID = 1 AND StoreName = '테스트 치킨집' AND StorePhone = '02-000-0001'
-      AND StoreAddress = '테스트시 가게로 1'
+    WHERE StoreID = 1 AND StoreName = '복정 바삭치킨' AND StorePhone = '031-000-0001'
+      AND StoreAddress = '성남시 수정구 복정로 21'
       AND StoreImageURL = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/fried-chicken.jpg'
       AND MinimumOrderAmount = 12000 AND DeliveryFee = 2500
       AND EstimatedDeliveryMinutes = 30 AND IsOpen = TRUE
@@ -58,13 +58,13 @@ SELECT 6, 'Menus', 6, IF(EXISTS (
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 7, 'Favorites', 3, IF(EXISTS (
-    SELECT 1 FROM Favorites WHERE UserID = 1 AND StoreID = 1 AND CreatedAt = '2026-11-02 10:00:00'
+    SELECT 1 FROM Favorites WHERE UserID = 1 AND StoreID = 1 AND CreatedAt = '2024-05-16 10:00:00'
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 8, 'Orders', 8, IF(EXISTS (
     SELECT 1 FROM Orders
-    WHERE OrderID = 101 AND UserID = 1 AND StoreID = 1 AND OrderedAt = '2026-11-10 18:30:00'
-      AND OrderStatus = 'completed' AND DeliveryAddressText = '테스트시 이전로 9 101호'
+    WHERE OrderID = 101 AND UserID = 1 AND StoreID = 1 AND OrderedAt = '2024-10-12 18:30:00'
+      AND OrderStatus = 'completed' AND DeliveryAddressText = '성남시 수정구 성남대로 1299 101호'
       AND DeliveryFee = 2000 AND DiscountAmount = 1000
 ), 'PASS', 'FAIL')
 UNION ALL
@@ -78,12 +78,12 @@ SELECT 10, 'Reviews', 5, IF(EXISTS (
     SELECT 1 FROM Reviews
     WHERE ReviewID = 1 AND OrderID = 101 AND Rating = 5
       AND Content COLLATE utf8mb4_bin = '후라이드가 배달인데도 바삭했어요. 매운 치킨은 먹다 보니 매워서 둘이 번갈아 먹으니까 딱 좋았어요 😋'
-      AND CreatedAt = '2026-11-10 20:00:00'
+      AND CreatedAt = '2024-10-12 20:00:00'
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 11, 'ReviewHelpful', 4, IF(EXISTS (
     SELECT 1 FROM ReviewHelpful
-    WHERE UserID = 2 AND ReviewID = 1 AND IsHelpful = TRUE AND CreatedAt = '2026-11-12 09:00:00'
+    WHERE UserID = 2 AND ReviewID = 1 AND IsHelpful = TRUE AND CreatedAt = '2024-10-13 09:00:00'
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 12, '리뷰 있는 가게와 없는 가게', NULL, IF(
@@ -195,5 +195,30 @@ SELECT 24, '주문과 메뉴의 가게 일치, 완료 주문의 리뷰', NULL, I
     AND NOT EXISTS (
         SELECT 1 FROM Reviews AS r JOIN Orders AS o ON o.OrderID = r.OrderID
         WHERE o.OrderStatus <> 'completed'
+    ), 'PASS', 'FAIL')
+UNION ALL
+SELECT 25, '가입, 주소 등록, 즐겨찾기, 주문과 리뷰의 시간 순서', NULL, IF(
+    EXISTS (SELECT 1 FROM Orders)
+    AND NOT EXISTS (
+        SELECT 1 FROM Addresses AS a JOIN Users AS u ON u.UserID = a.UserID
+        WHERE a.CreatedAt < u.CreatedAt
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM Favorites AS f JOIN Users AS u ON u.UserID = f.UserID
+        WHERE f.CreatedAt < u.CreatedAt
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM Orders AS o JOIN Users AS u ON u.UserID = o.UserID
+        WHERE o.OrderedAt < u.CreatedAt
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM Reviews AS r JOIN Orders AS o ON o.OrderID = r.OrderID
+        WHERE r.CreatedAt < o.OrderedAt
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM ReviewHelpful AS rh
+        JOIN Reviews AS r ON r.ReviewID = rh.ReviewID
+        JOIN Users AS u ON u.UserID = rh.UserID
+        WHERE rh.CreatedAt < GREATEST(r.CreatedAt, u.CreatedAt)
     ), 'PASS', 'FAIL')
 ORDER BY CheckNo;
