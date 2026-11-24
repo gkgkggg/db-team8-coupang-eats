@@ -11,7 +11,15 @@ SET @img_chicken = CONCAT(@food_base, 'fried-chicken.jpg'),
     @img_pizza = CONCAT(@food_base, 'pizza.jpg'),
     @img_sushi = CONCAT(@food_base, 'sushi.jpg'),
     @img_burger = CONCAT(@food_base, 'burger.jpg'),
-    @img_coffee = CONCAT(@food_base, 'coffee.jpg');
+    @img_coffee = CONCAT(@food_base, 'coffee.jpg'),
+    @img_margherita = CONCAT(@food_base, 'margherita.jpg'),
+    @img_classic_burger = CONCAT(@food_base, 'classic-burger.jpg'),
+    @img_iced_americano = CONCAT(@food_base, 'iced-americano.jpg'),
+    @img_butter_cookies = CONCAT(@food_base, 'butter-cookies.jpg'),
+    @img_pork_cutlet = CONCAT(@food_base, 'pork-cutlet.jpg'),
+    @img_jjamppong = CONCAT(@food_base, 'jjamppong.jpg'),
+    @img_jokbal = CONCAT(@food_base, 'jokbal.jpg'),
+    @img_chicken_salad = CONCAT(@food_base, 'chicken-salad.jpg');
 
 START TRANSACTION;
 
@@ -89,27 +97,27 @@ INSERT INTO `StoreCategories` (`StoreID`, `CategoryID`) VALUES
 
 INSERT INTO `Menus` (`MenuID`, `StoreID`, `MenuName`, `CurrentPrice`, `MenuImageURL`, `IsAvailable`) VALUES
     (1, 1, '바삭 치킨', 18000, @img_chicken, TRUE),
-    (2, 1, '매운 치킨', 19000, NULL, FALSE),
+    (2, 1, '매운 치킨', 19000, @img_spicy, FALSE),
     (3, 2, '제육 덮밥', 14000, NULL, TRUE),
     (4, 3, '떡볶이', 8000, @img_tteokbokki, TRUE),
     (5, 2, '돌솥 비빔밥', 13500, @img_bibimbap, TRUE),
     (6, 4, '페퍼로니 피자', 19900, @img_pizza, TRUE),
-    (7, 4, '마르게리타 피자', 17900, NULL, FALSE),
+    (7, 4, '마르게리타 피자', 17900, @img_margherita, FALSE),
     (8, 4, '치즈 스틱', 3900, NULL, TRUE),
     (9, 5, '모둠 롤초밥', 14800, @img_sushi, TRUE),
     (10, 5, '유부초밥', 5900, NULL, TRUE),
     (11, 6, '더블 치즈버거', 10900, @img_burger, TRUE),
-    (12, 6, '클래식 버거', 8500, NULL, TRUE),
+    (12, 6, '클래식 버거', 8500, @img_classic_burger, TRUE),
     (13, 7, '카푸치노', 5500, @img_coffee, TRUE),
-    (14, 7, '아이스 아메리카노', 3900, NULL, TRUE),
-    (15, 7, '버터 쿠키', 2800, NULL, TRUE),
-    (16, 8, '순살 후라이드', 17000, NULL, TRUE),
+    (14, 7, '아이스 아메리카노', 3900, @img_iced_americano, TRUE),
+    (15, 7, '버터 쿠키', 2800, @img_butter_cookies, TRUE),
+    (16, 8, '순살 후라이드', 17000, @img_chicken, TRUE),
     (17, 8, '밤시장 양념 치킨', 18500, @img_spicy, TRUE),
-    (18, 3, '모둠 떡볶이', 11500, NULL, TRUE),
-    (19, 9, '등심 돈까스', 12500, NULL, TRUE),
-    (20, 10, '해물 짬뽕', 11000, NULL, TRUE),
-    (21, 11, '반반 족발', 29000, NULL, TRUE),
-    (22, 12, '닭가슴살 샐러드', 11900, NULL, TRUE),
+    (18, 3, '모둠 떡볶이', 11500, @img_tteokbokki, TRUE),
+    (19, 9, '등심 돈까스', 12500, @img_pork_cutlet, TRUE),
+    (20, 10, '해물 짬뽕', 11000, @img_jjamppong, TRUE),
+    (21, 11, '반반 족발', 29000, @img_jokbal, TRUE),
+    (22, 12, '닭가슴살 샐러드', 11900, @img_chicken_salad, TRUE),
     (23, 13, '레몬 마들렌 세트', 10500, NULL, FALSE),
     (24, 14, '순대국밥', 10500, NULL, TRUE);
 
@@ -229,4 +237,6 @@ INSERT INTO `ReviewHelpful` (`UserID`, `ReviewID`, `IsHelpful`, `CreatedAt`) VAL
 
 COMMIT;
 SET @food_base = NULL, @img_chicken = NULL, @img_spicy = NULL, @img_bibimbap = NULL,
-    @img_tteokbokki = NULL, @img_pizza = NULL, @img_sushi = NULL, @img_burger = NULL, @img_coffee = NULL;
+    @img_tteokbokki = NULL, @img_pizza = NULL, @img_sushi = NULL, @img_burger = NULL, @img_coffee = NULL,
+    @img_margherita = NULL, @img_classic_burger = NULL, @img_iced_americano = NULL, @img_butter_cookies = NULL,
+    @img_pork_cutlet = NULL, @img_jjamppong = NULL, @img_jokbal = NULL, @img_chicken_salad = NULL;

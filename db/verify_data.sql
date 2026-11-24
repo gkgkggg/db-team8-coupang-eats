@@ -124,7 +124,7 @@ SELECT 17, '선택 컬럼의 NULL 입력', NULL, IF(
     AND EXISTS (SELECT 1 FROM Categories WHERE CategoryID = 3 AND CategoryImageURL IS NULL)
     AND EXISTS (SELECT 1 FROM Stores WHERE StoreID = 2 AND StoreImageURL IS NULL)
     AND EXISTS (SELECT 1 FROM Stores WHERE StoreID = 3 AND StorePhone IS NULL AND EstimatedDeliveryMinutes IS NULL)
-    AND EXISTS (SELECT 1 FROM Menus WHERE MenuID = 2 AND MenuImageURL IS NULL)
+    AND EXISTS (SELECT 1 FROM Menus WHERE MenuID = 3 AND MenuImageURL IS NULL)
     AND EXISTS (SELECT 1 FROM Reviews WHERE ReviewID = 2 AND Content IS NULL),
     'PASS', 'FAIL')
 UNION ALL
@@ -165,8 +165,10 @@ SELECT 21, '즐겨찾기 조회와 추가 테스트 대상', NULL, IF(
     AND NOT EXISTS (SELECT 1 FROM Favorites WHERE UserID = 1 AND StoreID = 3),
     'PASS', 'FAIL')
 UNION ALL
-SELECT 22, '서로 다른 음식 사진 8개', NULL, IF(
-    (SELECT COUNT(*) FROM FoodImages) = 8
+SELECT 22, '음식 사진 16개, 사진이 있는 메뉴 19개와 없는 메뉴 5개', NULL, IF(
+    (SELECT COUNT(*) FROM FoodImages) = 16
+    AND (SELECT COUNT(*) FROM Menus WHERE MenuImageURL IS NOT NULL) = 19
+    AND (SELECT COUNT(*) FROM Menus WHERE MenuImageURL IS NULL) = 5
     AND NOT EXISTS (
         SELECT 1 FROM FoodImages
         WHERE NOT REGEXP_LIKE(ImageURL,
