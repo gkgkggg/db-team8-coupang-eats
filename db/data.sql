@@ -2,47 +2,97 @@
 USE `db_team8`;
 SET NAMES utf8mb4;
 
--- 외부 요청 없이 표시할 수 있는 24×24 PNG. 일부 행은 이미지 없음(NULL)도 확인한다.
-SET @sample_image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAH0lEQVR4nGPgSFtMFcQwatCoQaMGjRo0atCoQQNvEAAIM2ZfPmSfZQAAAABJRU5ErkJggg==';
+-- 음식 사진은 저장소의 예시 썸네일을 사용한다. 출처는 fixtures/food/README.md에 있다.
+SET @food_base = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/';
+SET @img_chicken = CONCAT(@food_base, 'fried-chicken.jpg'),
+    @img_spicy = CONCAT(@food_base, 'spicy-chicken.jpg'),
+    @img_bibimbap = CONCAT(@food_base, 'bibimbap.jpg'),
+    @img_tteokbokki = CONCAT(@food_base, 'tteokbokki.jpg'),
+    @img_pizza = CONCAT(@food_base, 'pizza.jpg'),
+    @img_sushi = CONCAT(@food_base, 'sushi.jpg'),
+    @img_burger = CONCAT(@food_base, 'burger.jpg'),
+    @img_coffee = CONCAT(@food_base, 'coffee.jpg');
 
 START TRANSACTION;
 
 INSERT INTO `Users` (`UserID`, `UserName`, `UserPhone`, `CreatedAt`) VALUES
     (1, '테스트 사용자 A', '010-0000-0001', '2026-11-01 09:00:00'),
     (2, '테스트 사용자 B', '010-0000-0002', '2026-11-01 10:00:00'),
-    (3, '테스트 사용자 C', NULL, '2026-11-01 11:00:00');
+    (3, '테스트 사용자 C', NULL, '2026-11-01 11:00:00'),
+    (4, '테스트 사용자 D', '010-0000-0004', '2026-11-02 10:00:00'),
+    (5, '테스트 사용자 E', '010-0000-0005', '2026-11-03 11:00:00'),
+    (6, '테스트 사용자 F', NULL, '2026-11-04 12:00:00'),
+    (7, '테스트 사용자 G', '010-0000-0007', '2026-11-05 13:00:00'),
+    (8, '테스트 사용자 H', '010-0000-0008', '2026-11-06 14:00:00');
 
 INSERT INTO `Addresses` (`AddressID`, `UserID`, `AddressLabel`, `PostalCode`, `AddressLine1`,
     `AddressLine2`, `IsDefault`, `CreatedAt`) VALUES
     (1, 1, '집', '01234', '테스트시 연습로 1', '101호', TRUE, '2026-11-01 09:05:00'),
     (2, 1, '회사', '01235', '테스트시 연습로 2', NULL, FALSE, '2026-11-01 09:10:00'),
-    (3, 2, '집', NULL, '테스트시 연습로 3', NULL, FALSE, '2026-11-01 10:05:00');
+    (3, 2, '집', NULL, '테스트시 연습로 3', NULL, FALSE, '2026-11-01 10:05:00'),
+    (4, 4, '집', '01236', '테스트시 연습로 4', '202호', TRUE, '2026-11-02 10:15:00'),
+    (5, 4, '학교', '01237', '테스트시 학습로 1', '실습실', FALSE, '2026-11-02 11:30:00'),
+    (6, 5, '회사', '01238', '테스트시 실습로 5', '3층', TRUE, '2026-11-03 11:20:00'),
+    (7, 6, '집', '01239', '테스트시 실습로 6', NULL, FALSE, '2026-11-04 12:15:00'),
+    (8, 8, '집', '01240', '테스트시 학습로 8', '301호', TRUE, '2026-11-06 14:10:00');
 
 INSERT INTO `Categories` (`CategoryID`, `CategoryName`, `CategoryImageURL`, `DisplayOrder`) VALUES
-    (1, '한식', @sample_image, 20),
-    (2, '치킨', @sample_image, 10),
-    (3, '분식', NULL, 30);
+    (1, '한식', @img_bibimbap, 20),
+    (2, '치킨', @img_chicken, 10),
+    (3, '분식', NULL, 30),
+    (4, '피자', @img_pizza, 40),
+    (5, '일식', @img_sushi, 50),
+    (6, '버거', @img_burger, 60),
+    (7, '카페', @img_coffee, 70),
+    (8, '야식', NULL, 80);
 
 INSERT INTO `Stores` (`StoreID`, `StoreName`, `StorePhone`, `StoreAddress`, `StoreImageURL`,
     `MinimumOrderAmount`, `DeliveryFee`, `EstimatedDeliveryMinutes`, `IsOpen`) VALUES
-    (1, '테스트 치킨집', '02-000-0001', '테스트시 가게로 1', @sample_image, 12000, 2500, 30, TRUE),
+    (1, '테스트 치킨집', '02-000-0001', '테스트시 가게로 1', @img_chicken, 12000, 2500, 30, TRUE),
     (2, '테스트 한식당', '02-000-0002', '테스트시 가게로 2', NULL, 14000, 3000, 40, FALSE),
-    (3, '테스트 분식집', NULL, '테스트시 가게로 3', @sample_image, 8000, 0, NULL, TRUE);
+    (3, '테스트 분식집', NULL, '테스트시 가게로 3', @img_tteokbokki, 8000, 0, NULL, TRUE),
+    (4, '오븐 피자', '02-000-0004', '테스트시 가게로 4', @img_pizza, 15900, 3500, 45, TRUE),
+    (5, '한입 초밥', '02-000-0005', '테스트시 가게로 5', @img_sushi, 12900, 4000, 35, TRUE),
+    (6, '정원 버거', '02-000-0006', '테스트시 가게로 6', @img_burger, 9800, 1500, 25, TRUE),
+    (7, '모퉁이 커피', NULL, '테스트시 가게로 7', @img_coffee, 5500, 2000, 20, TRUE),
+    (8, '밤시장 양념치킨', '02-000-0008', '테스트시 가게로 8', @img_spicy, 16000, 4500, 55, FALSE);
 
 -- 1번 가게는 한식과 치킨에 모두 속한다.
 INSERT INTO `StoreCategories` (`StoreID`, `CategoryID`) VALUES
-    (1, 1), (1, 2), (2, 1), (3, 3);
+    (1, 1), (1, 2), (2, 1), (3, 3),
+    (4, 4), (4, 8), (5, 5), (6, 6), (6, 8), (7, 7), (8, 2), (8, 8);
 
 INSERT INTO `Menus` (`MenuID`, `StoreID`, `MenuName`, `CurrentPrice`, `MenuImageURL`, `IsAvailable`) VALUES
-    (1, 1, '바삭 치킨', 18000, @sample_image, TRUE),
+    (1, 1, '바삭 치킨', 18000, @img_chicken, TRUE),
     (2, 1, '매운 치킨', 19000, NULL, FALSE),
     (3, 2, '제육 덮밥', 14000, NULL, TRUE),
-    (4, 3, '떡볶이', 8000, @sample_image, TRUE);
+    (4, 3, '떡볶이', 8000, @img_tteokbokki, TRUE),
+    (5, 2, '돌솥 비빔밥', 13500, @img_bibimbap, TRUE),
+    (6, 4, '페퍼로니 피자', 19900, @img_pizza, TRUE),
+    (7, 4, '마르게리타 피자', 17900, NULL, FALSE),
+    (8, 4, '치즈 스틱', 3900, NULL, TRUE),
+    (9, 5, '모둠 롤초밥', 14800, @img_sushi, TRUE),
+    (10, 5, '유부초밥', 5900, NULL, TRUE),
+    (11, 6, '더블 치즈버거', 10900, @img_burger, TRUE),
+    (12, 6, '클래식 버거', 8500, NULL, TRUE),
+    (13, 7, '카푸치노', 5500, @img_coffee, TRUE),
+    (14, 7, '아이스 아메리카노', 3900, NULL, TRUE),
+    (15, 7, '버터 쿠키', 2800, NULL, TRUE),
+    (16, 8, '순살 후라이드', 17000, NULL, TRUE),
+    (17, 8, '밤시장 양념 치킨', 18500, @img_spicy, TRUE),
+    (18, 3, '모둠 떡볶이', 11500, NULL, TRUE);
 
 -- Postman에서 1번 사용자가 3번 가게를 새로 추가할 수 있게 이 조합은 비워 둔다.
 INSERT INTO `Favorites` (`UserID`, `StoreID`, `CreatedAt`) VALUES
     (1, 1, '2026-11-02 10:00:00'),
-    (2, 3, '2026-11-02 11:00:00');
+    (2, 3, '2026-11-02 11:00:00'),
+    (4, 4, '2026-11-07 12:00:00'),
+    (4, 7, '2026-11-07 12:15:00'),
+    (5, 5, '2026-11-08 11:00:00'),
+    (6, 6, '2026-11-08 12:00:00'),
+    (7, 7, '2026-11-09 09:30:00'),
+    (7, 8, '2026-11-09 20:00:00'),
+    (8, 3, '2026-11-10 20:30:00');
 
 INSERT INTO `Orders` (`OrderID`, `UserID`, `StoreID`, `OrderedAt`, `OrderStatus`,
     `DeliveryAddressText`, `DeliveryFee`, `DiscountAmount`) VALUES
@@ -51,7 +101,19 @@ INSERT INTO `Orders` (`OrderID`, `UserID`, `StoreID`, `OrderedAt`, `OrderStatus`
     (103, 1, 3, '2026-11-23 18:00:00', 'preparing', '테스트시 연습로 1 101호', 0, 0),
     (104, 1, 1, '2026-11-23 18:05:00', 'delivering', '테스트시 연습로 1 101호', 2500, 1000),
     (105, 1, 3, '2026-11-23 17:00:00', 'cancelled', '테스트시 연습로 2', 0, 0),
-    (106, 2, 3, '2026-11-22 18:00:00', 'completed', '테스트시 연습로 3', 0, 0);
+    (106, 2, 3, '2026-11-22 18:00:00', 'completed', '테스트시 연습로 3', 0, 0),
+    (107, 4, 4, '2026-11-12 19:00:00', 'completed', '테스트시 연습로 4 202호', 3500, 2000),
+    (108, 5, 5, '2026-11-13 12:20:00', 'completed', '테스트시 실습로 5 3층', 4000, 0),
+    (109, 6, 6, '2026-11-14 13:20:00', 'completed', '테스트시 실습로 6', 1500, 1000),
+    (110, 7, 7, '2026-11-15 09:10:00', 'completed', '테스트시 이전로 7', 2000, 0),
+    (111, 4, 4, '2026-11-24 18:10:00', 'preparing', '테스트시 학습로 1 실습실', 3500, 0),
+    (112, 5, 5, '2026-11-24 18:15:00', 'cancelled', '테스트시 실습로 5 3층', 4000, 500),
+    (113, 6, 6, '2026-11-24 18:20:00', 'delivering', '테스트시 실습로 6', 1500, 0),
+    (114, 1, 7, '2026-11-19 08:50:00', 'completed', '테스트시 연습로 1 101호', 2000, 0),
+    (115, 7, 6, '2026-11-16 12:40:00', 'completed', '테스트시 이전로 7', 1500, 0),
+    (116, 4, 2, '2026-11-17 12:30:00', 'completed', '테스트시 연습로 4 202호', 3000, 0),
+    (117, 5, 8, '2026-11-18 21:10:00', 'completed', '테스트시 실습로 5 3층', 4500, 3000),
+    (118, 8, 3, '2026-11-23 17:40:00', 'completed', '테스트시 학습로 8 301호', 0, 0);
 
 -- 101번 주문에는 현재와 다른 메뉴명·단가·주소·배달비를 보관한다.
 INSERT INTO `OrderItems` (`OrderID`, `MenuID`, `Quantity`, `UnitPriceAtOrder`, `MenuNameAtOrder`) VALUES
@@ -61,16 +123,49 @@ INSERT INTO `OrderItems` (`OrderID`, `MenuID`, `Quantity`, `UnitPriceAtOrder`, `
     (103, 4, 2, 8000, '떡볶이'),
     (104, 1, 1, 18000, '바삭 치킨'),
     (105, 4, 1, 8000, '떡볶이'),
-    (106, 4, 1, 8000, '떡볶이');
+    (106, 4, 1, 8000, '떡볶이'),
+    (107, 6, 1, 19900, '페퍼로니 피자'),
+    (107, 8, 2, 3900, '치즈 스틱'),
+    (108, 9, 1, 14800, '모둠 롤초밥'),
+    (108, 10, 1, 5900, '유부초밥'),
+    (109, 11, 2, 10900, '더블 치즈버거'),
+    (110, 13, 2, 5500, '카푸치노'),
+    (110, 15, 1, 2800, '버터 쿠키'),
+    (111, 6, 1, 19900, '페퍼로니 피자'),
+    (112, 9, 1, 14800, '모둠 롤초밥'),
+    (113, 12, 2, 8500, '클래식 버거'),
+    (114, 13, 1, 5500, '카푸치노'),
+    (115, 11, 1, 10900, '더블 치즈버거'),
+    (116, 5, 1, 14000, '돌솥 비빔밥'),
+    (117, 17, 2, 18500, '밤시장 양념 치킨'),
+    (118, 18, 1, 11500, '모둠 떡볶이');
 
 -- 1번 가게의 리뷰는 2건이다. 3번 가게는 완료 주문이 있지만 리뷰는 없다.
 INSERT INTO `Reviews` (`ReviewID`, `OrderID`, `Rating`, `Content`, `CreatedAt`) VALUES
     (1, 101, 5, '바삭하고 따뜻했어요.', '2026-11-10 20:00:00'),
-    (2, 102, 4, NULL, '2026-11-11 20:00:00');
+    (2, 102, 4, NULL, '2026-11-11 20:00:00'),
+    (3, 107, 5, '치즈 스틱까지 따뜻하게 도착했어요.', '2026-11-12 21:00:00'),
+    (4, 108, 3, '양은 적당했어요.', '2026-11-13 14:30:00'),
+    (5, 109, 4, '빵과 패티가 잘 어울렸어요.', '2026-11-14 15:00:00'),
+    (6, 110, 5, '커피가 진하고 쿠키도 좋았어요.', '2026-11-15 10:30:00'),
+    (7, 115, 2, '음식이 조금 식어 있었어요.', '2026-11-16 14:00:00'),
+    (8, 116, 4, '채소가 골고루 들어 있었어요.', '2026-11-17 14:00:00'),
+    (9, 117, 1, '다음에는 양념을 따로 받고 싶어요.', '2026-11-18 23:00:00');
 
 INSERT INTO `ReviewHelpful` (`UserID`, `ReviewID`, `IsHelpful`, `CreatedAt`) VALUES
     (2, 1, TRUE, '2026-11-12 09:00:00'),
-    (3, 1, FALSE, '2026-11-12 09:30:00');
+    (3, 1, FALSE, '2026-11-12 09:30:00'),
+    (1, 3, TRUE, '2026-11-13 08:00:00'),
+    (5, 3, TRUE, '2026-11-13 09:00:00'),
+    (6, 3, FALSE, '2026-11-13 09:30:00'),
+    (4, 4, TRUE, '2026-11-14 10:00:00'),
+    (7, 5, TRUE, '2026-11-15 11:00:00'),
+    (2, 6, TRUE, '2026-11-16 11:00:00'),
+    (6, 7, FALSE, '2026-11-17 12:00:00'),
+    (2, 8, TRUE, '2026-11-18 10:00:00'),
+    (8, 9, TRUE, '2026-11-19 09:00:00'),
+    (4, 9, FALSE, '2026-11-19 09:30:00');
 
 COMMIT;
-SET @sample_image = NULL;
+SET @food_base = NULL, @img_chicken = NULL, @img_spicy = NULL, @img_bibimbap = NULL,
+    @img_tteokbokki = NULL, @img_pizza = NULL, @img_sushi = NULL, @img_burger = NULL, @img_coffee = NULL;

@@ -9,6 +9,12 @@ WITH StoreReviews AS (
     FROM Orders AS o
     LEFT JOIN Reviews AS r ON r.OrderID = o.OrderID
     GROUP BY o.StoreID
+), FoodImages AS (
+    SELECT CategoryImageURL AS ImageURL FROM Categories WHERE CategoryImageURL IS NOT NULL
+    UNION
+    SELECT StoreImageURL FROM Stores WHERE StoreImageURL IS NOT NULL
+    UNION
+    SELECT MenuImageURL FROM Menus WHERE MenuImageURL IS NOT NULL
 )
 SELECT 1 AS CheckNo, 'Users' AS CheckName, 4 AS ColumnsChecked,
     IF(EXISTS (
@@ -27,16 +33,15 @@ UNION ALL
 SELECT 3, 'Categories', 4, IF(EXISTS (
     SELECT 1 FROM Categories
     WHERE CategoryID = 2 AND CategoryName = '치킨'
-      AND CategoryImageURL LIKE 'data:image/png;base64,%'
-      AND LEFT(FROM_BASE64(SUBSTRING(CategoryImageURL, 23)), 8) = UNHEX('89504E470D0A1A0A')
+      AND CategoryImageURL = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/fried-chicken.jpg'
       AND DisplayOrder = 10
 ), 'PASS', 'FAIL')
 UNION ALL
 SELECT 4, 'Stores', 9, IF(EXISTS (
     SELECT 1 FROM Stores
     WHERE StoreID = 1 AND StoreName = '테스트 치킨집' AND StorePhone = '02-000-0001'
-      AND StoreAddress = '테스트시 가게로 1' AND StoreImageURL LIKE 'data:image/png;base64,%'
-      AND LEFT(FROM_BASE64(SUBSTRING(StoreImageURL, 23)), 8) = UNHEX('89504E470D0A1A0A')
+      AND StoreAddress = '테스트시 가게로 1'
+      AND StoreImageURL = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/fried-chicken.jpg'
       AND MinimumOrderAmount = 12000 AND DeliveryFee = 2500
       AND EstimatedDeliveryMinutes = 30 AND IsOpen = TRUE
 ), 'PASS', 'FAIL')
@@ -48,8 +53,7 @@ UNION ALL
 SELECT 6, 'Menus', 6, IF(EXISTS (
     SELECT 1 FROM Menus
     WHERE MenuID = 1 AND StoreID = 1 AND MenuName = '바삭 치킨' AND CurrentPrice = 18000
-      AND MenuImageURL LIKE 'data:image/png;base64,%'
-      AND LEFT(FROM_BASE64(SUBSTRING(MenuImageURL, 23)), 8) = UNHEX('89504E470D0A1A0A')
+      AND MenuImageURL = 'https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/fried-chicken.jpg'
       AND IsAvailable = TRUE
 ), 'PASS', 'FAIL')
 UNION ALL
@@ -159,4 +163,36 @@ SELECT 21, '즐겨찾기 조회와 추가 테스트 대상', NULL, IF(
     AND EXISTS (SELECT 1 FROM Stores WHERE StoreID = 3)
     AND NOT EXISTS (SELECT 1 FROM Favorites WHERE UserID = 1 AND StoreID = 3),
     'PASS', 'FAIL')
+UNION ALL
+SELECT 22, '서로 다른 음식 사진 8개', NULL, IF(
+    (SELECT COUNT(*) FROM FoodImages) = 8
+    AND NOT EXISTS (
+        SELECT 1 FROM FoodImages
+        WHERE NOT REGEXP_LIKE(ImageURL,
+            '^https://raw[.]githubusercontent[.]com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/[a-z-]+[.]jpg$', 'c')
+    ), 'PASS', 'FAIL')
+UNION ALL
+SELECT 23, '평점 1~5점, 무료 배달, 복수 가게와 품절 메뉴', NULL, IF(
+    (SELECT COUNT(DISTINCT Rating) FROM Reviews) = 5
+    AND EXISTS (SELECT 1 FROM Stores WHERE DeliveryFee = 0 AND IsOpen = TRUE)
+    AND (SELECT COUNT(*) FROM Stores WHERE IsOpen = FALSE) >= 2
+    AND (SELECT COUNT(DISTINCT StoreID) FROM Menus WHERE IsAvailable = FALSE) >= 2,
+    'PASS', 'FAIL')
+UNION ALL
+SELECT 24, '주문과 메뉴의 가게 일치, 완료 주문의 리뷰', NULL, IF(
+    EXISTS (SELECT 1 FROM Orders) AND EXISTS (SELECT 1 FROM Reviews)
+    AND NOT EXISTS (
+        SELECT 1 FROM Orders AS o
+        WHERE NOT EXISTS (SELECT 1 FROM OrderItems AS oi WHERE oi.OrderID = o.OrderID)
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM OrderItems AS oi
+        JOIN Orders AS o ON o.OrderID = oi.OrderID
+        JOIN Menus AS m ON m.MenuID = oi.MenuID
+        WHERE o.StoreID <> m.StoreID
+    )
+    AND NOT EXISTS (
+        SELECT 1 FROM Reviews AS r JOIN Orders AS o ON o.OrderID = r.OrderID
+        WHERE o.OrderStatus <> 'completed'
+    ), 'PASS', 'FAIL')
 ORDER BY CheckNo;
