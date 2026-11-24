@@ -1,0 +1,722 @@
+===== 즐겨찾기 =====
+### 즐겨찾기 조회: 사용자1 (1건)
+GET /api/users/1/favorites
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "deliveryFee": 2500,
+      "estimatedDeliveryMinutes": 30,
+      "favoritedAt": "2026-11-02 10:00:00",
+      "isOpen": true,
+      "minimumOrderAmount": 12000,
+      "storeId": 1,
+      "storeImageUrl": "https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/fried-chicken.jpg",
+      "storeName": "테스트 치킨집"
+    }
+  ]
+}
+
+### 즐겨찾기 조회: 사용자7 (2건, 영업종료 가게 포함)
+GET /api/users/7/favorites
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "deliveryFee": 4500,
+      "estimatedDeliveryMinutes": 55,
+      "favoritedAt": "2026-11-09 20:00:00",
+      "isOpen": false,
+      "minimumOrderAmount": 16000,
+      "storeId": 8,
+      "storeImageUrl": "https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/spicy-chicken.jpg",
+      "storeName": "밤시장 양념치킨"
+    },
+    {
+      "deliveryFee": 2000,
+      "estimatedDeliveryMinutes": 20,
+      "favoritedAt": "2026-11-09 09:30:00",
+      "isOpen": true,
+      "minimumOrderAmount": 5500,
+      "storeId": 7,
+      "storeImageUrl": "https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/db/fixtures/food/coffee.jpg",
+      "storeName": "모퉁이 커피"
+    }
+  ]
+}
+
+### 즐겨찾기 조회: 사용자3 (빈 목록)
+GET /api/users/3/favorites
+status: 200 (expected 200) -> PASS
+{
+  "data": []
+}
+
+### 즐겨찾기 조회: 없는 사용자
+GET /api/users/999/favorites
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 즐겨찾기 추가: 사용자1 + 가게3
+POST /api/users/1/favorites
+body: {"storeId": 3}
+status: 201 (expected 201) -> PASS
+{
+  "data": {
+    "storeId": 3,
+    "userId": 1
+  }
+}
+
+### 즐겨찾기 추가: 중복
+POST /api/users/1/favorites
+body: {"storeId": 3}
+status: 409 (expected 409) -> PASS
+{
+  "error": {
+    "code": "ALREADY_FAVORITE",
+    "message": "이미 즐겨찾기한 가게입니다."
+  }
+}
+
+### 즐겨찾기 추가: 없는 가게
+POST /api/users/1/favorites
+body: {"storeId": 999}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "STORE_NOT_FOUND",
+    "message": "가게를 찾을 수 없습니다."
+  }
+}
+
+### 즐겨찾기 추가: storeId 문자열
+POST /api/users/1/favorites
+body: {"storeId": "abc"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "storeId는 정수여야 합니다."
+  }
+}
+
+### 즐겨찾기 추가: 없는 사용자
+POST /api/users/999/favorites
+body: {"storeId": 3}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 즐겨찾기 삭제: 사용자1 - 가게3
+DELETE /api/users/1/favorites/3
+status: 204 (expected 204) -> PASS
+(본문 없음)
+
+### 즐겨찾기 삭제: 이미 없음
+DELETE /api/users/1/favorites/3
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "FAVORITE_NOT_FOUND",
+    "message": "즐겨찾기에 없는 가게입니다."
+  }
+}
+
+### 즐겨찾기 삭제: 없는 사용자
+DELETE /api/users/999/favorites/3
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+===== 내 정보 · 요약 =====
+### 내 정보: 사용자1 (전화번호 마스킹)
+GET /api/users/1
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "userId": 1,
+    "userName": "테스트 사용자 A",
+    "userPhone": "010-****-0001"
+  }
+}
+
+### 내 정보: 사용자3 (전화번호 null)
+GET /api/users/3
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "userId": 3,
+    "userName": "테스트 사용자 C",
+    "userPhone": null
+  }
+}
+
+### 내 정보: 없는 사용자
+GET /api/users/999
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 요약: 사용자1 (리뷰1, 도움1, 즐겨찾기1)
+GET /api/users/1/summary
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "favoriteCount": 1,
+    "helpfulCount": 1,
+    "reviewCount": 1,
+    "userId": 1,
+    "userName": "테스트 사용자 A",
+    "userPhone": "010-****-0001"
+  }
+}
+
+### 요약: 사용자4 (리뷰2, 도움3, 즐겨찾기2)
+GET /api/users/4/summary
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "favoriteCount": 2,
+    "helpfulCount": 3,
+    "reviewCount": 2,
+    "userId": 4,
+    "userName": "테스트 사용자 D",
+    "userPhone": "010-****-0004"
+  }
+}
+
+### 요약: 사용자3 (모두 0)
+GET /api/users/3/summary
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "favoriteCount": 0,
+    "helpfulCount": 0,
+    "reviewCount": 0,
+    "userId": 3,
+    "userName": "테스트 사용자 C",
+    "userPhone": null
+  }
+}
+
+### 요약: 없는 사용자
+GET /api/users/999/summary
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+===== 내 리뷰 =====
+### 내 리뷰 목록: 사용자4 (리뷰8, 리뷰3)
+GET /api/users/4/reviews
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "content": "고추장이 따로 와서 조금씩 넣어 먹기 좋았어요. 나물도 골고루 들어 있었는데 밥이 조금 식어서 아쉬웠어요.",
+      "createdAt": "2026-11-17 14:00:00",
+      "helpfulCount": 1,
+      "myReaction": null,
+      "notHelpfulCount": 0,
+      "orderId": 116,
+      "rating": 4,
+      "reviewId": 8,
+      "storeId": 2,
+      "storeName": "테스트 한식당"
+    },
+    {
+      "content": "피자도 따끈했고 치즈 스틱은 반으로 갈랐더니 치즈가 쭉 늘어났어요. 다음에도 이 조합으로 시킬 듯요 ㅎㅎ",
+      "createdAt": "2026-11-12 21:00:00",
+      "helpfulCount": 2,
+      "myReaction": null,
+      "notHelpfulCount": 1,
+      "orderId": 107,
+      "rating": 5,
+      "reviewId": 3,
+      "storeId": 4,
+      "storeName": "오븐 피자"
+    }
+  ]
+}
+
+### 내 리뷰 목록: 사용자1 (리뷰1)
+GET /api/users/1/reviews
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "content": "후라이드가 배달인데도 바삭했어요. 매운 치킨은 먹다 보니 매워서 둘이 번갈아 먹으니까 딱 좋았어요 😋",
+      "createdAt": "2026-11-10 20:00:00",
+      "helpfulCount": 1,
+      "myReaction": null,
+      "notHelpfulCount": 1,
+      "orderId": 101,
+      "rating": 5,
+      "reviewId": 1,
+      "storeId": 1,
+      "storeName": "테스트 치킨집"
+    }
+  ]
+}
+
+### 내 리뷰 목록: 사용자3 (빈 목록)
+GET /api/users/3/reviews
+status: 200 (expected 200) -> PASS
+{
+  "data": []
+}
+
+### 내 리뷰 목록: 없는 사용자
+GET /api/users/999/reviews
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+===== 도움됨 반응 =====
+### 도움됨 등록: 사용자1 -> 리뷰1 (true)
+PUT /api/users/1/helpful-reviews/1
+body: {"isHelpful": true}
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "isHelpful": true,
+    "reviewId": 1,
+    "userId": 1
+  }
+}
+
+### 반영 확인: 사용자1 리뷰 (helpfulCount 2, myReaction true)
+GET /api/users/1/reviews
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "content": "후라이드가 배달인데도 바삭했어요. 매운 치킨은 먹다 보니 매워서 둘이 번갈아 먹으니까 딱 좋았어요 😋",
+      "createdAt": "2026-11-10 20:00:00",
+      "helpfulCount": 2,
+      "myReaction": true,
+      "notHelpfulCount": 1,
+      "orderId": 101,
+      "rating": 5,
+      "reviewId": 1,
+      "storeId": 1,
+      "storeName": "테스트 치킨집"
+    }
+  ]
+}
+
+### 도움됨 변경: false
+PUT /api/users/1/helpful-reviews/1
+body: {"isHelpful": false}
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "isHelpful": false,
+    "reviewId": 1,
+    "userId": 1
+  }
+}
+
+### 반영 확인: (helpfulCount 1, notHelpfulCount 2, myReaction false)
+GET /api/users/1/reviews
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "content": "후라이드가 배달인데도 바삭했어요. 매운 치킨은 먹다 보니 매워서 둘이 번갈아 먹으니까 딱 좋았어요 😋",
+      "createdAt": "2026-11-10 20:00:00",
+      "helpfulCount": 1,
+      "myReaction": false,
+      "notHelpfulCount": 2,
+      "orderId": 101,
+      "rating": 5,
+      "reviewId": 1,
+      "storeId": 1,
+      "storeName": "테스트 치킨집"
+    }
+  ]
+}
+
+### 도움됨: isHelpful 문자열
+PUT /api/users/1/helpful-reviews/1
+body: {"isHelpful": "true"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "isHelpful은 true 또는 false여야 합니다."
+  }
+}
+
+### 도움됨: isHelpful 누락
+PUT /api/users/1/helpful-reviews/1
+body: {}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "isHelpful은 true 또는 false여야 합니다."
+  }
+}
+
+### 도움됨: 없는 리뷰
+PUT /api/users/1/helpful-reviews/999
+body: {"isHelpful": true}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "REVIEW_NOT_FOUND",
+    "message": "리뷰를 찾을 수 없습니다."
+  }
+}
+
+### 도움됨: 없는 사용자
+PUT /api/users/999/helpful-reviews/1
+body: {"isHelpful": true}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 도움됨 취소: 사용자1 - 리뷰1
+DELETE /api/users/1/helpful-reviews/1
+status: 204 (expected 204) -> PASS
+(본문 없음)
+
+### 도움됨 취소: 이미 없음
+DELETE /api/users/1/helpful-reviews/1
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "REACTION_NOT_FOUND",
+    "message": "취소할 반응이 없습니다."
+  }
+}
+
+### 도움됨 취소: 없는 사용자
+DELETE /api/users/999/helpful-reviews/1
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+===== 주소 =====
+### 주소 목록: 사용자1 (집 기본 -> 회사)
+GET /api/users/1/addresses
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "addressId": 1,
+      "addressLabel": "집",
+      "addressLine1": "테스트시 연습로 1",
+      "addressLine2": "101호",
+      "createdAt": "2026-11-01 09:05:00",
+      "isDefault": true,
+      "postalCode": "01234"
+    },
+    {
+      "addressId": 2,
+      "addressLabel": "회사",
+      "addressLine1": "테스트시 연습로 2",
+      "addressLine2": null,
+      "createdAt": "2026-11-01 09:10:00",
+      "isDefault": false,
+      "postalCode": "01235"
+    }
+  ]
+}
+
+### 주소 목록: 사용자3 (빈 목록)
+GET /api/users/3/addresses
+status: 200 (expected 200) -> PASS
+{
+  "data": []
+}
+
+### 주소 목록: 없는 사용자
+GET /api/users/999/addresses
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 주소 등록: 사용자1 (기본 아님)
+POST /api/users/1/addresses
+body: {"addressLabel": "학교", "postalCode": "13120", "addressLine1": "테스트시 연습로 10", "addressLine2": "AI관"}
+status: 201 (expected 201) -> PASS
+{
+  "data": {
+    "addressId": 9,
+    "addressLabel": "학교",
+    "addressLine1": "테스트시 연습로 10",
+    "addressLine2": "AI관",
+    "isDefault": false,
+    "postalCode": "13120"
+  }
+}
+
+### 주소 등록: 사용자3 첫 주소 (자동 기본)
+POST /api/users/3/addresses
+body: {"addressLabel": "집", "addressLine1": "테스트시 연습로 11"}
+status: 201 (expected 201) -> PASS
+{
+  "data": {
+    "addressId": 10,
+    "addressLabel": "집",
+    "addressLine1": "테스트시 연습로 11",
+    "addressLine2": null,
+    "isDefault": true,
+    "postalCode": null
+  }
+}
+
+### 주소 등록: addressLine1 누락
+POST /api/users/1/addresses
+body: {"addressLabel": "학교"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "addressLine1은 1~200자 문자열이어야 합니다."
+  }
+}
+
+### 주소 등록: 우편번호 형식 오류
+POST /api/users/1/addresses
+body: {"addressLabel": "학교", "postalCode": "123", "addressLine1": "주소"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "postalCode는 숫자 5자리 문자열이거나 null이어야 합니다."
+  }
+}
+
+### 주소 등록: 없는 사용자
+POST /api/users/999/addresses
+body: {"addressLabel": "집", "addressLine1": "주소"}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 주소 수정: 사용자1 - 방금 등록한 주소
+PUT /api/users/1/addresses/9
+body: {"addressLabel": "학교(수정)", "postalCode": "13120", "addressLine1": "테스트시 연습로 10", "addressLine2": "AI관 2층"}
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "addressId": 9,
+    "addressLabel": "학교(수정)",
+    "addressLine1": "테스트시 연습로 10",
+    "addressLine2": "AI관 2층",
+    "createdAt": "2026-11-24 13:49:47",
+    "isDefault": false,
+    "postalCode": "13120"
+  }
+}
+
+### 주소 수정: 다른 사용자의 주소(주소4)
+PUT /api/users/1/addresses/4
+body: {"addressLabel": "학교", "postalCode": "13120", "addressLine1": "테스트시 연습로 10", "addressLine2": "AI관"}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "ADDRESS_NOT_FOUND",
+    "message": "주소를 찾을 수 없습니다."
+  }
+}
+
+### 주소 수정: 없는 주소
+PUT /api/users/1/addresses/999
+body: {"addressLabel": "학교", "postalCode": "13120", "addressLine1": "테스트시 연습로 10", "addressLine2": "AI관"}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "ADDRESS_NOT_FOUND",
+    "message": "주소를 찾을 수 없습니다."
+  }
+}
+
+### 주소 수정: 입력 오류
+PUT /api/users/1/addresses/9
+body: {"addressLabel": "학교"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "addressLine1은 1~200자 문자열이어야 합니다."
+  }
+}
+
+### 기본 주소 변경: 사용자1 -> 주소2
+PUT /api/users/1/default-address
+body: {"addressId": 2}
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "addressId": 2,
+    "isDefault": true,
+    "userId": 1
+  }
+}
+
+### 반영 확인: 회사가 기본, 집은 false
+GET /api/users/1/addresses
+status: 200 (expected 200) -> PASS
+{
+  "data": [
+    {
+      "addressId": 2,
+      "addressLabel": "회사",
+      "addressLine1": "테스트시 연습로 2",
+      "addressLine2": null,
+      "createdAt": "2026-11-01 09:10:00",
+      "isDefault": true,
+      "postalCode": "01235"
+    },
+    {
+      "addressId": 1,
+      "addressLabel": "집",
+      "addressLine1": "테스트시 연습로 1",
+      "addressLine2": "101호",
+      "createdAt": "2026-11-01 09:05:00",
+      "isDefault": false,
+      "postalCode": "01234"
+    },
+    {
+      "addressId": 9,
+      "addressLabel": "학교(수정)",
+      "addressLine1": "테스트시 연습로 10",
+      "addressLine2": "AI관 2층",
+      "createdAt": "2026-11-24 13:49:47",
+      "isDefault": false,
+      "postalCode": "13120"
+    }
+  ]
+}
+
+### 기본 주소 변경: 다른 사용자의 주소(주소4)
+PUT /api/users/1/default-address
+body: {"addressId": 4}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "ADDRESS_NOT_FOUND",
+    "message": "주소를 찾을 수 없습니다."
+  }
+}
+
+### 기본 주소 변경: addressId 문자열
+PUT /api/users/1/default-address
+body: {"addressId": "2"}
+status: 400 (expected 400) -> PASS
+{
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "addressId는 정수여야 합니다."
+  }
+}
+
+### 기본 주소 변경: 없는 사용자
+PUT /api/users/999/default-address
+body: {"addressId": 2}
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 기본 주소 원복: 사용자1 -> 주소1
+PUT /api/users/1/default-address
+body: {"addressId": 1}
+status: 200 (expected 200) -> PASS
+{
+  "data": {
+    "addressId": 1,
+    "isDefault": true,
+    "userId": 1
+  }
+}
+
+### 주소 삭제: 사용자1 - 방금 등록한 주소
+DELETE /api/users/1/addresses/9
+status: 204 (expected 204) -> PASS
+(본문 없음)
+
+### 주소 삭제: 이미 없음
+DELETE /api/users/1/addresses/9
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "ADDRESS_NOT_FOUND",
+    "message": "주소를 찾을 수 없습니다."
+  }
+}
+
+### 주소 삭제: 다른 사용자의 주소(주소4)
+DELETE /api/users/1/addresses/4
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "ADDRESS_NOT_FOUND",
+    "message": "주소를 찾을 수 없습니다."
+  }
+}
+
+### 주소 삭제: 없는 사용자
+DELETE /api/users/999/addresses/9
+status: 404 (expected 404) -> PASS
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "사용자를 찾을 수 없습니다."
+  }
+}
+
+### 주소 삭제: 사용자3 임시 주소 (원복)
+DELETE /api/users/3/addresses/10
+status: 204 (expected 204) -> PASS
+(본문 없음)
+
+===== 결과: PASS 57 / FAIL 0 =====
