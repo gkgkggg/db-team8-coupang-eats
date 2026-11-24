@@ -5,6 +5,10 @@ from common import error
 from db import execute, query
 
 bp = Blueprint("favorites", __name__)
+DEFAULT_IMAGE_URL = (
+    "https://raw.githubusercontent.com/gkgkggg/db-team8-coupang-eats/main/"
+    "db/fixtures/common/no-photo.png"
+)
 
 
 @bp.route("/api/users/<int:user_id>/favorites", methods=["GET"])
@@ -16,7 +20,7 @@ def list_favorites(user_id):
         """
         SELECT s.StoreID AS storeId,
                s.StoreName AS storeName,
-               s.StoreImageURL AS storeImageUrl,
+               COALESCE(s.StoreImageURL, %s) AS storeImageUrl,
                s.MinimumOrderAmount AS minimumOrderAmount,
                s.DeliveryFee AS deliveryFee,
                s.EstimatedDeliveryMinutes AS estimatedDeliveryMinutes,
@@ -27,7 +31,7 @@ def list_favorites(user_id):
         WHERE f.UserID = %s
         ORDER BY f.CreatedAt DESC
         """,
-        (user_id,),
+        (DEFAULT_IMAGE_URL, user_id),
     )
     for r in rows:
         r["isOpen"] = bool(r["isOpen"])
