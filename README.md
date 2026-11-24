@@ -2,7 +2,7 @@
 
 쿠팡이츠의 홈, 마이이츠(즐겨찾기 포함), 주문내역 화면을 구현한다. MySQL 스키마와 화면별 SQL, API 코드를 이 저장소에서 공유한다.
 
-DB 스키마는 MySQL에서 생성과 제약조건을 확인했다. 샘플 데이터, 화면별 SQL, API 서버와 뷰는 작성 전이다.
+DB 스키마와 검증용 샘플 데이터를 준비했다. 화면별 SQL, API 서버와 뷰는 작성 전이다.
 
 ## 공용 자료
 
@@ -51,7 +51,7 @@ DB 스키마는 MySQL에서 생성과 제약조건을 확인했다. 샘플 데�
 
 ## 로컬 실행
 
-DB 생성은 [MySQL 실행 안내](db/README.md)를 따른다. 서버 구현 후 설치·실행 명령과 MySQL 연결 방법을 [backend/README.md](backend/README.md)에 작성한다.
+DB 생성, 샘플 입력과 검증은 [MySQL 실행 안내](db/README.md)를 따른다. 서버 구현 후 설치·실행 명령과 MySQL 연결 방법을 [backend/README.md](backend/README.md)에 작성한다.
 
 Postman에서 [Collection](postman/DB8.postman_collection.json)과 [DB8 Local 환경](postman/DB8-Local.postman_environment.json)을 가져오고, 활성 환경의 `baseUrl`을 자기 API 서버 주소로 설정한다. `http://localhost:3000`은 예시다. [설정 방법](postman/README.md)
 
